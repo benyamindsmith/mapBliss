@@ -1,0 +1,20 @@
+Package: mapBliss
+Type: Package
+Title: Plot routes and trips on beautiful maps.
+Version: 0.1.0
+Author: Benjamin Smith
+Maintainer: Benjamin Smith<benyamindsmith at gmail dot com>
+Description: Inspired by [Atlas.co](https://atlas.co/products/map), the mapBliss package allows for users to plot flight paths and road trips on beautiful maps by using leaflet and the Mapbox API.
+  For more information on how this package was developed check out my [blogs](https://bensstats.wordpress.com/?s=atlas). 
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports:
+        tidyverse,
+        tidygeocoder,
+        leaflet,
+        osrm,
+        webshot,
+        htmlwidgets,
+        magick
+RoxygenNote: 7.1.2
