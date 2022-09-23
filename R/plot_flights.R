@@ -3,22 +3,32 @@
 #'
 #'Plot multiple flights with `plot_flights`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`.
 #'
-#'@param addresses
-#'@param color
-#'@param opacity
-#'@param weight
-#'@param radius
-#'@param label_text
-#'@param label_position
-#'@param font
-#'@param font_weight
-#'@param font_size
-#'@param text_indent
-#'@param mapBoxTemplate
-#'@param nCurves
+#'For more information on how to integrate the MapBox API to make beautiful maps, check out [this blog](https://bensstats.wordpress.com/2021/10/25/robservations-16-using-the-mapbox-api-with-leaflet/).
+#'
+#'@param addresses The locations which you want to plot your flight route. ORDER MATTERS so be sure to list the locations in the order you want to plot the flight path.
+#'@param color The color of the points and route. By default set to "black"
+#'@param opacity Opacity of the points and route on the map
+#'@param weight Line thickness
+#'@param radius Point size
+#'@param label_text Alternative text to display as the address labels.
+#'@param label_position where to place the label relative to the point
+#'@param font font-family css property
+#'@param font_weight font-weight css property
+#'@param font_size font-size css property
+#'@param text_indent text indent property
+#'@param mapBoxTemplate the MapBox template you want to use.
+#'@param nCurves flight path smoothness. I have found setting this to 100 works best, but feel free to play around with it.
 #'@export
 #'@examples
-#'plot_flights()
+#' plot_flights(c("YYZ",
+#' "GIG",
+#' "CPT/FACT",
+#' "BOM",
+#' "TLV"),
+#' weight = 1,
+#' opacity = 1,
+#' nCurves = 10,
+#' label_position="right")
 
 
 plot_flights<-function(addresses,

@@ -11,6 +11,7 @@ Encoding: UTF-8
 LazyData: true
 Imports:
         tidyverse,
+        magrittr,
         tidygeocoder,
         leaflet,
         osrm,
