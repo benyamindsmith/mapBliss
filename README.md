@@ -4,6 +4,8 @@ Create Beautiful Maps Of Your Adventures With Leaflet And The MapBox API Within 
 
 ## Some Examples
 
+The following are just some screen shots of the images that can be produced. It is possible to create a map and save it as .svg file for a sharper image.
+
 <img src='https://user-images.githubusercontent.com/46410142/191990637-8d24eb7d-a96d-4f68-83a3-ba9f4240dfb4.png' height="500" /></a>
 
 <img src='https://user-images.githubusercontent.com/46410142/191990873-c3df1335-4875-47af-8d4e-dd06fe973f67.png' height="500" /></a>
