@@ -6,13 +6,17 @@ Create Beautiful Maps Of Your Adventures With Leaflet And The MapBox API Within 
 
 This package is based functions I created for creating print-quality souvenir maps like the ones you can find on [Atlas.co](atlas.co/products/map). Feel free to check out my blogs on the topic [here](https://bensstats.wordpress.com/?s=atlas).
 
-## Installing This Package
+## Table of Contents
+
+* [Installing This Package]()
+
+### Installing This Package
 
 ```r
 devtools::install_github("benyamindsmith/mapBliss")
 ```
 
-## Some Example Visuals
+### Some Example Visuals
 
 
 The following are just some screen shots of the images that can be produced. It is possible to create a map and save it as .svg file for a sharper image.
