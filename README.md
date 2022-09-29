@@ -10,6 +10,7 @@ This package is based functions I created for creating print-quality souvenir ma
 
 * [Installing This Package](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#installing-this-package)
 * [Basic Functionality](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#basic-functionality)
+* [Some Example Visuals]()
 
 ### Installing This Package
 
