@@ -21,6 +21,7 @@
 #' @param saturation
 #' @param MapBoxTemplate
 #' @importFrom osrm osrmRoute
+#' @importFrom sf st_geometry
 #' @export
 #' @examples
 #'

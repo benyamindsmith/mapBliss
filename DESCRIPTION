@@ -13,6 +13,7 @@ Imports:
         magrittr,
         tibble,
         rlang,
+        sf,
         geosphere,
         tidygeocoder,
         leaflet,
