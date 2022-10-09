@@ -9,6 +9,7 @@ This package is based functions I created for creating print-quality souvenir ma
 ## Table of Contents
 
 * [Installing This Package](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#installing-this-package)
+* [Dependencies]()
 * [Basic Functionality](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#basic-functionality)
 * [Some Example Visuals](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#some-example-visuals)
 
@@ -17,6 +18,23 @@ This package is based functions I created for creating print-quality souvenir ma
 ```r
 devtools::install_github("benyamindsmith/mapBliss")
 ```
+
+### Dependencies
+
+This package depends requires the following packages: 
+
+* [dplyr](https://dplyr.tidyverse.org)
+* [magrittr](https://magrittr.tidyverse.org)
+* [tibble](https://tibble.tidyverse.org)
+* [rlang](https://rlang.r-lib.org)
+* [st](https://r-spatial.github.io/sf/)
+* [geosphere](http://uribo.github.io/rpkg_showcase/spatial/geosphere.html)
+* [tidygeocoder](https://jessecambon.github.io/tidygeocoder/)
+* [leaflet](https://rstudio.github.io/leaflet/)
+* [osrm](https://github.com/riatelab/osrm)
+* [webshot](https://wch.github.io/webshot/articles/intro.html)
+* [htmlwidgets](https://github.com/ramnathv/htmlwidgets)
+* [magick](https://github.com/ropensci/magick)
 
 ### Basic Functionality
 
