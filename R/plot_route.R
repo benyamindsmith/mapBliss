@@ -24,7 +24,7 @@
 #' @export
 #' @examples
 #'
-#' viz<- plot_route("Toronto","
+#' viz<- plot_route("Toronto",
 #'                   "Niagara Falls",
 #'                   how="car",
 #'                   font="Courier",

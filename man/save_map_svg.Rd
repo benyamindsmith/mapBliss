@@ -14,8 +14,8 @@ Save map
 }
 \examples{
 
-#' viz<- plot_route("Toronto","
-                  "Niagara Falls",
+viz<- plot_route("Toronto",
+                 "Niagara Falls",
                   how="car",
                   font="Courier",
                   label_position="right",
