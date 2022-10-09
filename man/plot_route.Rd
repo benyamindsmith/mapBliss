@@ -29,9 +29,3 @@ Documentation is needed
 \details{
 For more information on how to integrate the MapBox API to make beautiful maps, check out [this blog](https://bensstats.wordpress.com/2021/10/25/robservations-16-using-the-mapbox-api-with-leaflet/).
 }
-\examples{
-
-viz<- plot_route_Mapbox("Toronto","Niagara Falls",how="car",font="Courier",label_position="right",weight=1.5)
-
-viz
-}

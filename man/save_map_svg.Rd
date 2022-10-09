@@ -13,5 +13,14 @@ Documentation is needed.
 Save map
 }
 \examples{
-save_map_svg()
+
+#' viz<- plot_route("Toronto","
+                  "Niagara Falls",
+                  how="car",
+                  font="Courier",
+                  label_position="right",
+                  weight=1.5)
+
+
+save_map_svg(viz)
 }

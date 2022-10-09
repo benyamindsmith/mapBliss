@@ -20,12 +20,21 @@
 #' @param text_indent
 #' @param saturation
 #' @param MapBoxTemplate
+#' @importFrom osrm osrmRoute
 #' @export
 #' @examples
 #'
-#' viz<- plot_route_Mapbox("Toronto","Niagara Falls",how="car",font="Courier",label_position="right",weight=1.5)
+#' viz<- plot_route("Toronto","
+#'                   "Niagara Falls",
+#'                   how="car",
+#'                   font="Courier",
+#'                   label_position="right",
+#'                   weight=1.5)
 #'
 #' viz
+#'
+
+
 
 
 

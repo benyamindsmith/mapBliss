@@ -7,9 +7,22 @@
 #'@param viz
 #'@param svg_name
 #'@param zoom
+#'@import magick
+#'@import webshot
+#'@import htmlwidgets
 #'@export
 #'@examples
-#'save_map_svg()
+#'
+#'#' viz<- plot_route("Toronto","
+#'                   "Niagara Falls",
+#'                   how="car",
+#'                   font="Courier",
+#'                   label_position="right",
+#'                   weight=1.5)
+#'
+#'
+#'save_map_svg(viz)
+
 
 save_map_svg<-function(viz, svg_name="Rplot.svg", zoom=3){
   # Saving the html generated
