@@ -1,11 +1,11 @@
-#' Plot route
+#' Plot Road Trip Route
 #'
 #' Documentation is needed
 #'
 #'For more information on how to integrate the MapBox API to make beautiful maps, check out [this blog](https://bensstats.wordpress.com/2021/10/25/robservations-16-using-the-mapbox-api-with-leaflet/).
 #'
-#' @param to
-#' @param from
+#'
+#' @param addresses
 #' @param how
 #' @param colour
 #' @param opacity
@@ -24,8 +24,7 @@
 #' @export
 #' @examples
 #'
-#' viz<- plot_route("Toronto",
-#'                   "Niagara Falls",
+#' viz<- plot_route(c("Toronto","Niagara Falls","Monsey"),
 #'                   how="car",
 #'                   font="Courier",
 #'                   label_position="right",
@@ -36,35 +35,45 @@
 
 
 
+plot_route<-function(addresses,
+                      how="car",
+                      colour="black",
+                      opacity=1,
+                      weight=1,
+                      radius=2,
+                      label_text=addresses,
+                      label_position="bottom",
+                      provider=providers$CartoDB.PositronNoLabels,
+                      font = "Lucida Console",
+                      font_weight="bold",
+                      font_size= "14px",
+                      text_indent="15px",
+                      saturation=0,
+                      mapBoxTemplate= "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"){
 
-
-plot_route<-function(to,
-                     from,
-                     how="car",
-                     colour="black",
-                     opacity=1,
-                     weight=1,
-                     radius=2,
-                     label_text=c(to,from),
-                     label_position="bottom",
-                     provider=providers$CartoDB.PositronNoLabels,
-                     font = "Lucida Console",
-                     font_weight="bold",
-                     font_size= "14px",
-                     text_indent="15px",
-                     saturation=0,
-                     mapBoxTemplate= "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"){
-  address_single <- tibble(singlelineaddress = c(to,from)) %>%
+  address_single <- tibble(singlelineaddress = addresses) %>%
     geocode(address=singlelineaddress,method = 'arcgis') %>%
     transmute(id = singlelineaddress,
               lon=long,
               lat=lat)
 
-  trip <- osrmRoute(src=address_single[1,2:3] %>% c,
-                    dst=address_single[2,2:3] %>% c,
-                    returnclass="sf",
-                    overview="full",
-                    osrm.profile = how )
+
+  trip <- list()
+
+  for(i in 1:(nrow(address_single)-1)){
+    trip[[i]] <- osrmRoute(src=address_single[i,2:3] %>% c,
+                           dst=address_single[i+1,2:3] %>% c,
+                           returnclass="sf",
+                           overview="full",
+                           osrm.profile = how )
+  }
+  trip<-do.call(rbind,trip)
+
+  trip<-do.call(rbind,st_geometry(trip)) %>%
+    as_tibble(.name_repair = "unique") %>%
+    set_names(c("lon","lat")) %>%
+    as.data.frame() %>%
+    as.matrix()
 
   m<-leaflet(trip,
              options = leafletOptions(zoomControl = FALSE,
@@ -77,10 +86,12 @@ plot_route<-function(to,
     addCircleMarkers(lat = address_single$lat,
                      lng = address_single$lon,
                      color = colour,
-                     stroke = FALSE,
+                     stroke = TRUE,
                      radius = radius,
                      fillOpacity = opacity) %>%
-    addPolylines(color = colour,
+    addPolylines(lng=trip[,1],
+                 lat=trip[,2],
+                 color = colour,
                  opacity=opacity,
                  weight=weight) %>%
     addLabelOnlyMarkers(address_single$lon,

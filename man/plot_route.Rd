@@ -2,17 +2,16 @@
 % Please edit documentation in R/plot_route.R
 \name{plot_route}
 \alias{plot_route}
-\title{Plot route}
+\title{Plot Road Trip Route}
 \usage{
 plot_route(
-  to,
-  from,
+  addresses,
   how = "car",
   colour = "black",
   opacity = 1,
   weight = 1,
   radius = 2,
-  label_text = c(to, from),
+  label_text = addresses,
   label_position = "bottom",
   provider = providers$CartoDB.PositronNoLabels,
   font = "Lucida Console",
@@ -31,8 +30,7 @@ For more information on how to integrate the MapBox API to make beautiful maps, 
 }
 \examples{
 
-viz<- plot_route("Toronto",
-                  "Niagara Falls",
+viz<- plot_route(c("Toronto","Niagara Falls","Monsey"),
                   how="car",
                   font="Courier",
                   label_position="right",
