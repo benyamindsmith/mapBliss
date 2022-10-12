@@ -23,6 +23,8 @@ plot_flights(
 \arguments{
 \item{addresses}{The locations which you want to plot your flight route. ORDER MATTERS so be sure to list the locations in the order you want to plot the flight path.}
 
+\item{colour}{The colour of the points and route. By default set to "black"}
+
 \item{opacity}{Opacity of the points and route on the map}
 
 \item{weight}{Line thickness}
@@ -39,13 +41,11 @@ plot_flights(
 
 \item{font_size}{font-size css property}
 
-\item{text_indent}{text indent property}
+\item{text_indent}{text indent css property}
 
 \item{mapBoxTemplate}{the MapBox template you want to use.}
 
 \item{nCurves}{flight path smoothness. I have found setting this to 100 works best, but feel free to play around with it.}
-
-\item{color}{The color of the points and route. By default set to "black"}
 }
 \description{
 Plot multiple flights with `plot_flights`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`.

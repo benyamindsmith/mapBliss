@@ -6,21 +6,26 @@
 \usage{
 save_map_svg(viz, svg_name = "Rplot.svg", zoom = 3)
 }
-\description{
-Documentation is needed.
+\arguments{
+\item{viz}{The viz you created with plot_route or plot_flights.}
+
+\item{svg_name}{The name of the file you want to call}
+
+\item{zoom}{How much you want to zoom in on your map. I find that setting `zoom=3` works best but try it out yourself to see what works.}
 }
-\details{
-Save map
+\description{
+Save map as .svg file for high quality printing!
 }
 \examples{
 
-viz<- plot_route("Toronto",
-                 "Niagara Falls",
+
+viz<- plot_route(c("Toronto","Niagara Falls","Monsey"),
                   how="car",
                   font="Courier",
                   label_position="right",
                   weight=1.5)
 
-
 save_map_svg(viz)
+## Deleting file for package speifics
+file.remove("Rplot.svg")
 }

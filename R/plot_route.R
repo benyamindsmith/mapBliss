@@ -1,27 +1,33 @@
 #' Plot Road Trip Route
 #'
-#' Documentation is needed
+#'Plot multiple stops on a route `plot_route`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`.
 #'
 #'For more information on how to integrate the MapBox API to make beautiful maps, check out [this blog](https://bensstats.wordpress.com/2021/10/25/robservations-16-using-the-mapbox-api-with-leaflet/).
 #'
 #'
-#' @param addresses
-#' @param how
-#' @param colour
-#' @param opacity
-#' @param weight
-#' @param radius
-#' @param label_text
-#' @param label_position
-#' @param provider
-#' @param font
-#' @param font_weight
-#' @param font_size
-#' @param text_indent
-#' @param saturation
-#' @param MapBoxTemplate
+#' @param addresses the stops on your route
+#' @param how routing profile to use, e.g. "car", "bike" or "foot" (when using the routing.openstreetmap.de test server)
+#' @param colour what colour you want the route line to be colored
+#' @param opacity line opacity - a value between 0 and 1
+#' @param weight Line thickness
+#' @param radius Point size
+#' @param label_text Alternative text to display as the address labels.
+#' @param label_position where to place the label relative to the point ("bottom", "top", "left", "right")
+#' @param font font-family css property
+#' @param font_weight font-weight css property
+#' @param font_size font-size css property
+#' @param text_indent text indent css property
+#' @param mapBoxTemplate the MapBox template you want to use.
 #' @importFrom osrm osrmRoute
 #' @importFrom sf st_geometry
+#' @importFrom magrittr %>%
+#' @importFrom tibble tibble
+#' @importFrom tibble as_tibble
+#' @importFrom tidygeocoder geocode
+#' @importFrom dplyr transmute
+#' @importFrom purrr set_names
+#' @importFrom geosphere gcIntermediate
+#' @import leaflet
 #' @export
 #' @examples
 #'
@@ -44,12 +50,10 @@ plot_route<-function(addresses,
                       radius=2,
                       label_text=addresses,
                       label_position="bottom",
-                      provider=providers$CartoDB.PositronNoLabels,
                       font = "Lucida Console",
                       font_weight="bold",
                       font_size= "14px",
                       text_indent="15px",
-                      saturation=0,
                       mapBoxTemplate= "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"){
 
   address_single <- tibble(singlelineaddress = addresses) %>%
