@@ -43,6 +43,7 @@ This package presently has three functions:
 1. `plot_route()` - for plotting road trips
 2. `plot_flights()` - for plotting flight routes
 3. `save_map_svg()` - for saving the map that you make as a vector graphics file which can be used for printing high resoultion post cards and posters. 
+
 (In progress)
 
 ### Some Example Visuals
