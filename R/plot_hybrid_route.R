@@ -14,8 +14,8 @@ plot_hybrid_route<- function(addresses,
                              font_weight="bold",
                              font_size= "14px",
                              text_indent="15px",
-                             mapBoxTemplate= "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"){
-  message("This function is still in development")
+                             mapBoxTemplate= "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                             nCurves=100){
 
   address_single <- tibble(singlelineaddress = addresses) %>%
     geocode(address=singlelineaddress,method = 'arcgis') %>%
@@ -23,6 +23,35 @@ plot_hybrid_route<- function(addresses,
               lon=long,
               lat=lat)
 
+  trip <- matrix(nrow=1,ncol=2)
+
+
+  for(i in 1:(nrow(address_single)-1)){
+    if(how[i]=="flight"){
+      trip<-rbind(trip,
+                  gcIntermediate(address_single[i,2:3],
+                                 address_single[i+1,2:3],
+                                 n=nCurves,
+                                 addStartEnd = T) )
+    }else{
+      roadTrip<-osrmRoute(src=address_single[i,2:3] %>% c,
+                            dst=address_single[i+1,2:3] %>% c,
+                            returnclass="sf",
+                            overview="full",
+                            osrm.profile = how[i])
+
+
+      roadTrip<- do.call(rbind,st_geometry(roadTrip)) %>%
+        as_tibble(.name_repair = "unique") %>%
+        set_names(c("lon","lat")) %>%
+        as.data.frame() %>%
+        as.matrix()
+
+      trip <- rbind(trip,
+                    roadTrip)
+    }
+
+  }
 
 
   m<-leaflet(trip,
