@@ -24,6 +24,7 @@ devtools::install_github("benyamindsmith/mapBliss")
 This package depends requires the following packages: 
 
 * [dplyr](https://dplyr.tidyverse.org)
+* [purrr](https://purrr.tidyverse.org)
 * [magrittr](https://magrittr.tidyverse.org)
 * [tibble](https://tibble.tidyverse.org)
 * [rlang](https://rlang.r-lib.org)
