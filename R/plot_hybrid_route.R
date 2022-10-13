@@ -1,6 +1,34 @@
 #' Plot Hybrid Route
 #'
-#' Documentation is needed
+#'Plot multiple stops on a route `plot_hybrid route()`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`. This function differs from `plot_route()`  and `plot_flights()`  as it accomidates a hybrid route where some locations are traveled via flight and others are traveled via car, bike or foot.
+#'
+#'@param addresses
+#'@param how
+#'@param colour
+#'@param opacity
+#'@param weight
+#'@param radius
+#'@param label_text
+#'@param label_position
+#'@param font
+#'@param font_size
+#'@param text_indent
+#'@param mapBoxTemplate
+#'@param nCurves
+#'@importFrom osrm osrmRoute
+#'@importFrom sf st_geometry
+#'@importFrom magrittr %>%
+#'@importFrom tibble tibble
+#'@importFrom tibble as_tibble
+#'@importFrom tidygeocoder geocode
+#'@importFrom dplyr transmute
+#'@importFrom purrr set_names
+#'@importFrom geosphere gcIntermediate
+#'@import leaflet
+#'@export
+#'@examples
+#'plot_hybrid_route(c("Detroit","Toronto","MKE"),
+#'                  c("car","flight"))
 
 plot_hybrid_route<- function(addresses,
                              how=c("car",...),
