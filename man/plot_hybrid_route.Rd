@@ -6,7 +6,7 @@
 \usage{
 plot_hybrid_route(
   addresses,
-  how = c("car", ...),
+  how = c("car", "flight", "bike", "foot"),
   colour = "black",
   opacity = 1,
   weight = 1,
@@ -17,9 +17,14 @@ plot_hybrid_route(
   font_weight = "bold",
   font_size = "14px",
   text_indent = "15px",
-  mapBoxTemplate = "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  mapBoxTemplate = "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  nCurves = 100
 )
 }
 \description{
-Documentation is needed
+Plot multiple stops on a route `plot_hybrid route()`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`. This function differs from `plot_route()`  and `plot_flights()`  as it accomidates a hybrid route where some locations are traveled via flight and others are traveled via car, bike or foot.
+}
+\examples{
+plot_hybrid_route(c("Detroit","Toronto","MKE"),
+                 c("car","flight"))
 }

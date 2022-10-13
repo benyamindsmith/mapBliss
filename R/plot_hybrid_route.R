@@ -31,7 +31,7 @@
 #'                  c("car","flight"))
 
 plot_hybrid_route<- function(addresses,
-                             how=c("car",...),
+                             how=c("car","flight","bike","foot"),
                              colour="black",
                              opacity=1,
                              weight=1,
