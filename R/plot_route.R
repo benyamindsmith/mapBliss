@@ -6,12 +6,12 @@
 #'
 #'
 #' @param addresses the stops on your route
-#' @param how routing profile to use, e.g. "car", "bike" or "foot" (when using the routing.openstreetmap.de test server)
+#' @param how routing profile(s) to use, e.g. "car", "bike" or "foot" (when using the routing.openstreetmap.de test server). n-1 routing profiles are required for for n addresses
 #' @param colour what colour you want the route line to be colored
 #' @param opacity line opacity - a value between 0 and 1
 #' @param weight Line thickness
 #' @param radius Point size
-#' @param label_text Alternative text to display as the address labels.
+#' @param label_text Optional. Alternative text to display as the address labels.
 #' @param label_position where to place the label relative to the point ("bottom", "top", "left", "right")
 #' @param font font-family css property
 #' @param font_weight font-weight css property
@@ -43,7 +43,7 @@
 
 
 plot_route<-function(addresses,
-                      how="car",
+                      how=c("car","bike","foot"),
                       colour="black",
                       opacity=1,
                       weight=1,
@@ -70,7 +70,7 @@ plot_route<-function(addresses,
                            dst=address_single[i+1,2:3] %>% c,
                            returnclass="sf",
                            overview="full",
-                           osrm.profile = how )
+                           osrm.profile = how[i] )
   }
   trip<-do.call(rbind,trip)
 

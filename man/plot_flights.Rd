@@ -43,7 +43,7 @@ plot_flights(
 
 \item{text_indent}{text indent css property}
 
-\item{mapBoxTemplate}{the MapBox template you want to use.}
+\item{mapBoxTemplate}{The MapBox template you want to use.}
 
 \item{nCurves}{flight path smoothness. I have found setting this to 100 works best, but feel free to play around with it.}
 }

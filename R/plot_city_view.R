@@ -2,9 +2,9 @@
 #'
 #' Documentation is needed
 #'
-#' @param city the city
-#' @param mapBoxTemplate
-#' @param zoomControl
+#' @param city The city you want to get a view of.
+#' @param mapBoxTemplate The MapBox template you want to use.
+#' @param zoomControl The zoom control for your bounding box. Format is `c(lng1,lat1,lng2,lat2)`
 #' @export
 #' @examples
 #'
@@ -14,7 +14,7 @@
 
 plot_city_view<-function(city,
                          mapBoxTemplate= "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                         zoomControl=0.1){
+                         zoomControl=c(0.1,-0.1,0.1,-0.1)){
   address_single <- tibble(singlelineaddress = city) %>%
     geocode(address=singlelineaddress,method = 'arcgis') %>%
     transmute(id = singlelineaddress,
@@ -25,10 +25,10 @@ plot_city_view<-function(city,
              options = leafletOptions(zoomControl = FALSE,
                                       attributionControl=FALSE)) %>%
     addTiles(urlTemplate = mapBoxTemplate) %>%
-    fitBounds(lng1 = max(address_single$lon)+zoomControl,
-              lat1 = max(address_single$lat)+zoomControl,
-              lng2 = min(address_single$lon)-zoomControl,
-              lat2 = min(address_single$lat)-zoom_control)
+    fitBounds(lng1 = max(address_single$lon)+zoomControl[1],
+              lat1 = max(address_single$lat)+zoomControl[2],
+              lng2 = min(address_single$lon)+zoomControl[3],
+              lat2 = min(address_single$lat)+zoom_control[4])
 
   m
 }

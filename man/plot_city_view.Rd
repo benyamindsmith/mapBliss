@@ -7,11 +7,15 @@
 plot_city_view(
   city,
   mapBoxTemplate = "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-  zoomControl = 0.1
+  zoomControl = c(0.1, -0.1, 0.1, -0.1)
 )
 }
 \arguments{
-\item{city}{the city}
+\item{city}{The city you want to get a view of.}
+
+\item{mapBoxTemplate}{The MapBox template you want to use.}
+
+\item{zoomControl}{The zoom control for your bounding box. Format is `c(lng1,lat1,lng2,lat2)`}
 }
 \description{
 Documentation is needed

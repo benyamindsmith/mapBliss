@@ -2,19 +2,19 @@
 #'
 #'Plot multiple stops on a route `plot_hybrid route()`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`. This function differs from `plot_route()`  and `plot_flights()`  as it accomidates a hybrid route where some locations are traveled via flight and others are traveled via car, bike or foot.
 #'
-#'@param addresses
-#'@param how
-#'@param colour
-#'@param opacity
-#'@param weight
-#'@param radius
-#'@param label_text
-#'@param label_position
-#'@param font
-#'@param font_size
-#'@param text_indent
-#'@param mapBoxTemplate
-#'@param nCurves
+#'@param addresses The stops on your route
+#'@param how Routing profile(s) to use, e.g. "car", "bike" or "foot" (when using the routing.openstreetmap.de test server) AND "flight". n-1 routing profiles are required for for n addresses
+#'@param colour  what colour you want the route line to be colored
+#'@param opacity line opacity - a value between 0 and 1
+#'@param weight Line thickness
+#'@param radius Point size
+#'@param label_text Optional. Alternative text to display as the address labels.
+#'@param label_position where to place the label relative to the point ("bottom", "top", "left", "right")
+#'@param font font-family css property
+#'@param font_weight font-weight css property
+#'@param font_size font-size css property
+#'@param text_indent text indent css property
+#'@param nCurves flight path smoothness. I have found setting this to 100 works best, but feel free to play around with it.
 #'@importFrom osrm osrmRoute
 #'@importFrom sf st_geometry
 #'@importFrom magrittr %>%

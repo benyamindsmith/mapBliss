@@ -21,6 +21,33 @@ plot_hybrid_route(
   nCurves = 100
 )
 }
+\arguments{
+\item{addresses}{The stops on your route}
+
+\item{how}{Routing profile(s) to use, e.g. "car", "bike" or "foot" (when using the routing.openstreetmap.de test server) AND "flight". n-1 routing profiles are required for for n addresses}
+
+\item{colour}{what colour you want the route line to be colored}
+
+\item{opacity}{line opacity - a value between 0 and 1}
+
+\item{weight}{Line thickness}
+
+\item{radius}{Point size}
+
+\item{label_text}{Optional. Alternative text to display as the address labels.}
+
+\item{label_position}{where to place the label relative to the point ("bottom", "top", "left", "right")}
+
+\item{font}{font-family css property}
+
+\item{font_weight}{font-weight css property}
+
+\item{font_size}{font-size css property}
+
+\item{text_indent}{text indent css property}
+
+\item{nCurves}{flight path smoothness. I have found setting this to 100 works best, but feel free to play around with it.}
+}
 \description{
 Plot multiple stops on a route `plot_hybrid route()`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`. This function differs from `plot_route()`  and `plot_flights()`  as it accomidates a hybrid route where some locations are traveled via flight and others are traveled via car, bike or foot.
 }

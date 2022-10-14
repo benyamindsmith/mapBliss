@@ -6,7 +6,7 @@
 \usage{
 plot_route(
   addresses,
-  how = "car",
+  how = c("car", "bike", "foot"),
   colour = "black",
   opacity = 1,
   weight = 1,
@@ -23,7 +23,7 @@ plot_route(
 \arguments{
 \item{addresses}{the stops on your route}
 
-\item{how}{routing profile to use, e.g. "car", "bike" or "foot" (when using the routing.openstreetmap.de test server)}
+\item{how}{routing profile(s) to use, e.g. "car", "bike" or "foot" (when using the routing.openstreetmap.de test server). n-1 routing profiles are required for for n addresses}
 
 \item{colour}{what colour you want the route line to be colored}
 
@@ -33,7 +33,7 @@ plot_route(
 
 \item{radius}{Point size}
 
-\item{label_text}{Alternative text to display as the address labels.}
+\item{label_text}{Optional. Alternative text to display as the address labels.}
 
 \item{label_position}{where to place the label relative to the point ("bottom", "top", "left", "right")}
 
