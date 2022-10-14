@@ -7,7 +7,7 @@
 plot_city_view(
   city,
   mapBoxTemplate = "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-  zoomControl = c(0.1, -0.1, 0.1, -0.1)
+  zoomControl = c(0.1, 0.1, -0.1, -0.1)
 )
 }
 \arguments{
