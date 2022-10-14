@@ -1,6 +1,6 @@
 #' Plot A City View Map
 #'
-#' Documentation is needed
+#' Plot a city view with `plot_city_view`. This essentially applies a bounding box to the MapBox template of your choosing to make a beautiful map of your favorite city!
 #'
 #' @param city The city you want to get a view of.
 #' @param mapBoxTemplate The MapBox template you want to use.
@@ -28,7 +28,7 @@ plot_city_view<-function(city,
     fitBounds(lng1 = max(address_single$lon)+zoomControl[1],
               lat1 = max(address_single$lat)+zoomControl[2],
               lng2 = min(address_single$lon)+zoomControl[3],
-              lat2 = min(address_single$lat)+zoom_control[4])
+              lat2 = min(address_single$lat)+zoomControl[4])
 
   m
 }

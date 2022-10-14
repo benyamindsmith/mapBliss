@@ -18,7 +18,7 @@ plot_city_view(
 \item{zoomControl}{The zoom control for your bounding box. Format is `c(lng1,lat1,lng2,lat2)`}
 }
 \description{
-Documentation is needed
+Plot a city view with `plot_city_view`. This essentially applies a bounding box to the MapBox template of your choosing to make a beautiful map of your favorite city!
 }
 \examples{
 
