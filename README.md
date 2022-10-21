@@ -28,7 +28,7 @@ This package depends requires the following packages:
 * [magrittr](https://magrittr.tidyverse.org)
 * [tibble](https://tibble.tidyverse.org)
 * [rlang](https://rlang.r-lib.org)
-* [st](https://r-spatial.github.io/sf/)
+* [sf](https://r-spatial.github.io/sf/)
 * [geosphere](http://uribo.github.io/rpkg_showcase/spatial/geosphere.html)
 * [tidygeocoder](https://jessecambon.github.io/tidygeocoder/)
 * [leaflet](https://rstudio.github.io/leaflet/)
