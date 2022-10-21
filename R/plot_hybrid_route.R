@@ -14,6 +14,7 @@
 #'@param font_weight font-weight css property
 #'@param font_size font-size css property
 #'@param text_indent text indent css property
+#' @param mapBoxTemplate The MapBox template you want to use.
 #'@param nCurves flight path smoothness. I have found setting this to 100 works best, but feel free to play around with it.
 #'@param zoomControl The zoom control for your bounding box. Default Format is `c(lng1,lat1,lng2,lat2)`
 #'@importFrom osrm osrmRoute

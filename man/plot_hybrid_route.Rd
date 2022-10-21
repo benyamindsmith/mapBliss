@@ -47,6 +47,8 @@ plot_hybrid_route(
 
 \item{text_indent}{text indent css property}
 
+\item{mapBoxTemplate}{The MapBox template you want to use.}
+
 \item{nCurves}{flight path smoothness. I have found setting this to 100 works best, but feel free to play around with it.}
 
 \item{zoomControl}{The zoom control for your bounding box. Default Format is `c(lng1,lat1,lng2,lat2)`}
