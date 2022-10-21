@@ -17,7 +17,8 @@ plot_flights(
   font_size = "14px",
   text_indent = "15px",
   mapBoxTemplate = "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-  nCurves = 100
+  nCurves = 100,
+  zoomControl = c(0.1, 0.1, -0.1, -0.1)
 )
 }
 \arguments{
@@ -46,6 +47,8 @@ plot_flights(
 \item{mapBoxTemplate}{The MapBox template you want to use.}
 
 \item{nCurves}{flight path smoothness. I have found setting this to 100 works best, but feel free to play around with it.}
+
+\item{zoomControl}{The zoom control for your bounding box. Format is `c(lng1,lat1,lng2,lat2)`}
 }
 \description{
 Plot multiple flights with `plot_flights`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`.

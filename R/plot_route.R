@@ -18,6 +18,7 @@
 #' @param font_size font-size css property
 #' @param text_indent text indent css property
 #' @param mapBoxTemplate the MapBox template you want to use.
+#' @param zoomControl The zoom control for your bounding box. Default format is `c(lng1,lat1,lng2,lat2)`
 #' @importFrom osrm osrmRoute
 #' @importFrom sf st_geometry
 #' @importFrom magrittr %>%
@@ -54,7 +55,8 @@ plot_route<-function(addresses,
                       font_weight="bold",
                       font_size= "14px",
                       text_indent="15px",
-                      mapBoxTemplate= "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"){
+                      mapBoxTemplate= "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                      zoomControl=c(0.1,0.1,-0.1,-0.1)){
 
   address_single <- tibble(singlelineaddress = addresses) %>%
     geocode(address=singlelineaddress,method = 'arcgis') %>%
@@ -83,10 +85,10 @@ plot_route<-function(addresses,
   m<-leaflet(trip,
              options = leafletOptions(zoomControl = FALSE,
                                       attributionControl=FALSE)) %>%
-    fitBounds(lng1 = max(address_single$lon)+0.1,
-              lat1 = max(address_single$lat)+0.1,
-              lng2 = min(address_single$lon)-0.1,
-              lat2 = min(address_single$lat)-0.1) %>%
+    fitBounds(lng1 = max(address_single$lon)+zoomControl[1],
+              lat1 = max(address_single$lat)+zoomControl[2],
+              lng2 = min(address_single$lon)+zoomControl[3],
+              lat2 = min(address_single$lat)+zoomControl[4]) %>%
     addTiles(urlTemplate = mapBoxTemplate) %>%
     addCircleMarkers(lat = address_single$lat,
                      lng = address_single$lon,

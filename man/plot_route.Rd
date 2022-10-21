@@ -17,7 +17,8 @@ plot_route(
   font_weight = "bold",
   font_size = "14px",
   text_indent = "15px",
-  mapBoxTemplate = "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  mapBoxTemplate = "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  zoomControl = c(0.1, 0.1, -0.1, -0.1)
 )
 }
 \arguments{
@@ -46,6 +47,8 @@ plot_route(
 \item{text_indent}{text indent css property}
 
 \item{mapBoxTemplate}{the MapBox template you want to use.}
+
+\item{zoomControl}{The zoom control for your bounding box. Default format is `c(lng1,lat1,lng2,lat2)`}
 }
 \description{
 Plot multiple stops on a route `plot_route`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`.
