@@ -68,8 +68,8 @@ plot_route<-function(addresses,
   trip <- list()
 
   for(i in 1:(nrow(address_single)-1)){
-    trip[[i]] <- osrmRoute(src=address_single[i,2:3] %>% c,
-                           dst=address_single[i+1,2:3] %>% c,
+    trip[[i]] <- osrmRoute(src=address_single[i,2:3] %>% c %>% unlist,
+                           dst=address_single[i+1,2:3] %>% c %>% unlist,
                            returnclass="sf",
                            overview="full",
                            osrm.profile = how[i] )
