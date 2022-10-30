@@ -39,11 +39,19 @@ This package depends requires the following packages:
 
 ### Basic Functionality
 
-This package presently has three functions: 
+This package presently has five functions: 
 
-1. `plot_route()` - for plotting road trips
-2. `plot_flights()` - for plotting flight routes
-3. `save_map_svg()` - for saving the map that you make as a vector graphics file which can be used for printing high resoultion post cards and posters. 
+The functions created are:
+
+* `plot_route()` - for plotting car, bike and walking trips.
+
+* `plot_flights()` - for plotting flights. 
+
+* `plot_hybrid_route()` - for plotting a combination of flights and  car, bike and walking trips.
+
+* `plot_city_view()` - for plotting city maps. 
+
+* `save_map_svg()` - for saving the maps you created as print quality .svg files. 
 
 (In progress)
 
