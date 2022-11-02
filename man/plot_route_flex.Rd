@@ -54,7 +54,7 @@ plot_route_flex(
 DISCLAIMER: the `_flex()` functions offer more flexibility in label placement and will offer new features under development for the `mapBliss` package. These functions will be subject to change more regularly than the standard functions.
 }
 \details{
-CODE AND DOCUMENTATION IS NEEDED
+DOCUMENTATION IS NEEDED
 
 Plot multiple stops on a route `plot_route`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`.
 

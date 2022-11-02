@@ -75,7 +75,7 @@ DISCLAIMER: the `_flex()` functions offer more flexibility in label placement an
 \details{
 For more information on how to integrate the MapBox API to make beautiful maps, check out [this blog](https://bensstats.wordpress.com/2021/10/25/robservations-16-using-the-mapbox-api-with-leaflet/).
 
-CODE AND DOCUMENTATION IS NEEDED
+DOCUMENTATION IS NEEDED
 
 Plot multiple flights with `plot_flights`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`.
 

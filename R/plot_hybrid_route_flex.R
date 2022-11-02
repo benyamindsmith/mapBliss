@@ -2,7 +2,7 @@
 #'
 #'DISCLAIMER: the `_flex()` functions offer more flexibility in label placement and will offer new features under development for the `mapBliss` package. These functions will be subject to change more regularly than the standard functions.
 #'
-#'CODE AND DOCUMENTATION IS NEEDED
+#'DOCUMENTATION IS NEEDED
 #'
 #'Plot multiple stops on a route `plot_hybrid route()`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`. This function differs from `plot_route()`  and `plot_flights()`  as it accomidates a hybrid route where some locations are traveled via flight and others are traveled via car, bike or foot.
 #'
@@ -107,17 +107,30 @@ plot_hybrid_route<- function(addresses,
                  lat=trip[,2],
                  color = colour,
                  opacity=opacity,
-                 weight=weight) %>%
-    addLabelOnlyMarkers(address_single$lon,
-                        address_single$lat,
-                        label =  label_text,
-                        labelOptions = labelOptions(noHide = T,
-                                                    direction = label_position,
-                                                    textOnly = T,
-                                                    style=list("font-family" = font,
-                                                               "font-weight"= font_weight,
-                                                               "font-size"=font_size,
-                                                               "text-indent"=text_indent)))
+                 weight=weight)
+
+  for(i in 1:nrow(address_single)){
+
+
+    m <- m %>%
+      addLabelOnlyMarkers(
+        address_single$lon[i],
+        address_single$lat[i],
+        label =  label_text[i],
+        labelOptions = labelOptions(
+          noHide = T,
+          direction = label_position[i],
+          textOnly = T,
+          style =
+            list(
+              "font-family" = font,
+              "font-weight" = font_weight,
+              "font-size" = font_size,
+              "padding" = text_indent[i]
+            )
+        )
+      )
+  }
 
   m
 }

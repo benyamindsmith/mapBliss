@@ -77,7 +77,7 @@ Plot multiple stops on a route `plot_hybrid route()`. This function produces a h
 DISCLAIMER: the `_flex()` functions offer more flexibility in label placement and will offer new features under development for the `mapBliss` package. These functions will be subject to change more regularly than the standard functions.
 }
 \details{
-CODE AND DOCUMENTATION IS NEEDED
+DOCUMENTATION IS NEEDED
 
 Plot multiple stops on a route `plot_hybrid route()`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`. This function differs from `plot_route()`  and `plot_flights()`  as it accomidates a hybrid route where some locations are traveled via flight and others are traveled via car, bike or foot.
 }
