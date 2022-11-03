@@ -2,6 +2,7 @@
 
 Create beautiful maps of your adventures with Leaflet and the MapBox API in R. 
 
+**If you want to learn how you can contribute to this project, feel free to contact me via my [website](https://bensstats.wordpress.com)**
 ## Introduction
 
 This package is based functions I created for creating print-quality souvenir maps like the ones you can find on [Atlas.co](atlas.co/products/map).
