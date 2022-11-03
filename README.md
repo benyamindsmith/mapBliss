@@ -2,15 +2,17 @@
 
 Create beautiful maps of your adventures with Leaflet and the MapBox API in R. 
 
+**If you want to learn how you can contribute to this project, feel free to contact me via my [website](https://bensstats.wordpress.com)**
 ## Introduction
 
-This package is based functions I created for creating print-quality souvenir maps like the ones you can find on [Atlas.co](atlas.co/products/map). Feel free to check out my blogs on the topic [here](https://bensstats.wordpress.com/?s=atlas) for more information.
+This package is based functions I created for creating print-quality souvenir maps like the ones you can find on [Atlas.co](atlas.co/products/map).
+
+For some background on how this package came to be and for updates. Feel free to check out my blogs on the topic [here](https://bensstats.wordpress.com/?s=atlas).
 
 ## Table of Contents
 
 * [Installing This Package](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#installing-this-package)
 * [Dependencies](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#dependencies)
-* [Basic Functionality](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#basic-functionality)
 * [Some Example Visuals](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#some-example-visuals)
 
 ### Installing This Package
@@ -37,28 +39,13 @@ This package depends requires the following packages:
 * [htmlwidgets](https://github.com/ramnathv/htmlwidgets)
 * [magick](https://github.com/ropensci/magick)
 
-### Basic Functionality
-
-This package presently has five functions: 
-
-The functions created are:
-
-* `plot_route()` - for plotting car, bike and walking trips.
-
-* `plot_flights()` - for plotting flights. 
-
-* `plot_hybrid_route()` - for plotting a combination of flights and  car, bike and walking trips.
-
-* `plot_city_view()` - for plotting city maps. 
-
-* `save_map_svg()` - for saving the maps you created as print quality .svg files. 
-
-(In progress)
-
 ### Some Example Visuals
 
 
 The following are just some screen shots of the images that can be produced. It is possible to create a map and save it as .svg file for a sharper image.
+
+
+![image](https://user-images.githubusercontent.com/46410142/199815517-4da0d3f8-84a6-482c-83e7-c4e33d0dce7b.png)
 
 <img src='https://user-images.githubusercontent.com/46410142/191990637-8d24eb7d-a96d-4f68-83a3-ba9f4240dfb4.png' /></a>
 
@@ -69,4 +56,5 @@ The following are just some screen shots of the images that can be produced. It 
 <img src='https://user-images.githubusercontent.com/46410142/191992937-7d349b59-0185-41c9-9694-84f792aaa2b5.png' /></a>
 
 <img src='https://user-images.githubusercontent.com/46410142/197111466-3ccfe2c4-7e51-4c91-92d8-774a37c3c120.png' /></a>
+
 
