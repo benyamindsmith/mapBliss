@@ -13,7 +13,7 @@
 #'@param weight Line thickness
 #'@param radius Point size
 #'@param label_text Optional. Alternative text to display as the address labels.
-#'@param label_position where to place the label relative to the point ("bottom", "top", "left", "right")
+#'@param label_position where to place each of the labels relative to the points ("bottom", "top", "left", "right")
 #'@param font font-family css property
 #'@param font_weight font-weight css property
 #'@param font_size font-size css property
@@ -32,9 +32,17 @@
 #'@importFrom geosphere gcIntermediate
 #'@import leaflet
 #'@export
+#'
 #'@examples
-#'plot_hybrid_route_flex(c("Detroit","Toronto","MKE"),
-#'                  c("car","flight"))
+#'viz_1<-plot_hybrid_route_flex(addresses=c("Amsterdam","London","Newcastle upon Tyne"),
+#'                         how=c("car","car"),
+#'                         weight=3,
+#'                         colour="red",
+#'                         label_position = c("left","left","left"),
+#'                         text_indent= c("-6em","-5em","-13em"),
+#'                         mapBoxTemplate="//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+#'                         )
+#'viz_1
 
 plot_hybrid_route_flex<- function(addresses,
                              how=c("car","flight","bike","foot"),
@@ -71,7 +79,6 @@ plot_hybrid_route_flex<- function(addresses,
     }else{
       roadTrip<-osrmRoute(src=address_single[i,2:3] %>% c  %>% unlist,
                             dst=address_single[i+1,2:3] %>% c  %>% unlist,
-                            returnclass="sf",
                             overview="full",
                             osrm.profile = how[i])
 

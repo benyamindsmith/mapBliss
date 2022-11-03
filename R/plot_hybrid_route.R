@@ -67,7 +67,6 @@ plot_hybrid_route<- function(addresses,
     }else{
       roadTrip<-osrmRoute(src=address_single[i,2:3] %>% c  %>% unlist,
                             dst=address_single[i+1,2:3] %>% c  %>% unlist,
-                            returnclass="sf",
                             overview="full",
                             osrm.profile = how[i])
 

@@ -36,7 +36,7 @@ plot_route_flex(
 
 \item{label_text}{Optional. Alternative text to display as the address labels.}
 
-\item{label_position}{where to place the label relative to the point ("bottom", "top", "left", "right")}
+\item{label_position}{where to place teach of the labels relative to the points ("bottom", "top", "left", "right")}
 
 \item{font}{font-family css property}
 
@@ -62,12 +62,13 @@ For more information on how to integrate the MapBox API to make beautiful maps, 
 }
 \examples{
 
-viz<- plot_route(c("Toronto","Niagara Falls","Monsey"),
-                  how="car",
-                  font="Courier",
-                  label_position="right",
-                  weight=1.5)
-
-viz
-
+viz_1<-plot_hybrid_flex(addresses=c("Amsterdam","London","Newcastle upon Tyne"),
+                        how=c("car","car"),
+                        weight=3,
+                        colour="red",
+                        label_position = c("left","left","left"),
+                        text_indent= c("-6em","-5em","-13em"),
+                        mapBoxTemplate="//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        )
+viz_1
 }

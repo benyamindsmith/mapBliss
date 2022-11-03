@@ -37,7 +37,7 @@ plot_hybrid_route_flex(
 
 \item{label_text}{Optional. Alternative text to display as the address labels.}
 
-\item{label_position}{where to place the label relative to the point ("bottom", "top", "left", "right")}
+\item{label_position}{where to place each of the labels relative to the points ("bottom", "top", "left", "right")}
 
 \item{font}{font-family css property}
 
@@ -62,6 +62,13 @@ DOCUMENTATION IS NEEDED
 Plot multiple stops on a route `plot_hybrid route_flex()`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`. This function differs from `plot_route_flex()`  and `plot_flights_flex()`  as it accommodates a hybrid route where some locations are traveled via flight and others are traveled via car, bike or foot.
 }
 \examples{
-plot_hybrid_route_flex(c("Detroit","Toronto","MKE"),
-                 c("car","flight"))
+viz_1<-plot_hybrid_route_flex(addresses=c("Amsterdam","London","Newcastle upon Tyne"),
+                        how=c("car","car"),
+                        weight=3,
+                        colour="red",
+                        label_position = c("left","left","left"),
+                        text_indent= c("-6em","-5em","-13em"),
+                        mapBoxTemplate="//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        )
+viz_1
 }

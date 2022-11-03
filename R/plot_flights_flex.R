@@ -14,7 +14,7 @@
 #' @param weight Line thickness
 #' @param radius Point size
 #' @param label_text Alternative text to display as the address labels.
-#' @param label_position where to place the label relative to the point
+#' @param label_position where to place each of the labels relative to the points
 #' @param font font-family css property
 #' @param font_weight font-weight css property
 #' @param font_size font-size css property
@@ -30,7 +30,7 @@
 #' @import leaflet
 #' @export
 #' @examples
-#' plot_flights(c("YYZ",
+#' plot_flights_flex(c("YYZ",
 #' "GIG",
 #' "CPT/FACT",
 #' "BOM",
@@ -48,7 +48,7 @@ plot_flights_flex<-function(addresses,
                        weight=1,
                        radius=2,
                        label_text=addresses,
-                       label_position="bottom",
+                       label_position=c("bottom","top","left","right"),
                        font = "Lucida Console",
                        font_weight="bold",
                        font_size= "14px",

@@ -70,7 +70,6 @@ plot_route<-function(addresses,
   for(i in 1:(nrow(address_single)-1)){
     trip[[i]] <- osrmRoute(src=address_single[i,2:3] %>% c,
                            dst=address_single[i+1,2:3] %>% c,
-                           returnclass="sf",
                            overview="full",
                            osrm.profile = how[i] )
   }

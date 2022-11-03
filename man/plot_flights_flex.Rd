@@ -11,7 +11,7 @@ plot_flights_flex(
   weight = 1,
   radius = 2,
   label_text = addresses,
-  label_position = "bottom",
+  label_position = c("bottom", "top", "left", "right"),
   font = "Lucida Console",
   font_weight = "bold",
   font_size = "14px",
@@ -34,7 +34,7 @@ plot_flights_flex(
 
 \item{label_text}{Alternative text to display as the address labels.}
 
-\item{label_position}{where to place the label relative to the point}
+\item{label_position}{where to place each of the labels relative to the points}
 
 \item{font}{font-family css property}
 
@@ -61,7 +61,7 @@ Plot multiple flights with `plot_flights_flex()`. This function produces a html 
 For more information on how to integrate the MapBox API to make beautiful maps, check out [this blog](https://bensstats.wordpress.com/2021/10/25/robservations-16-using-the-mapbox-api-with-leaflet/).
 }
 \examples{
-plot_flights(c("YYZ",
+plot_flights_flex(c("YYZ",
 "GIG",
 "CPT/FACT",
 "BOM",
