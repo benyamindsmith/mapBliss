@@ -42,7 +42,7 @@
 #'
 
 
-plot_flights<-function(addresses,
+plot_flights_flex<-function(addresses,
                        colour="black",
                        opacity=1,
                        weight=1,
@@ -117,3 +117,5 @@ plot_flights<-function(addresses,
 
   m
 }
+
+

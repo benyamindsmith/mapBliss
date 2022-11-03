@@ -33,10 +33,10 @@
 #'@import leaflet
 #'@export
 #'@examples
-#'plot_hybrid_route(c("Detroit","Toronto","MKE"),
+#'plot_hybrid_route_flex(c("Detroit","Toronto","MKE"),
 #'                  c("car","flight"))
 
-plot_hybrid_route<- function(addresses,
+plot_hybrid_route_flex<- function(addresses,
                              how=c("car","flight","bike","foot"),
                              colour="black",
                              opacity=1,
@@ -111,13 +111,12 @@ plot_hybrid_route<- function(addresses,
 
   for(i in 1:nrow(address_single)){
 
-
     m <- m %>%
       addLabelOnlyMarkers(
         address_single$lon[i],
         address_single$lat[i],
         label =  label_text[i],
-        labelOptions = labelOptions(
+        labelOptions =labelOptions(
           noHide = T,
           direction = label_position[i],
           textOnly = T,
@@ -134,3 +133,5 @@ plot_hybrid_route<- function(addresses,
 
   m
 }
+
+
