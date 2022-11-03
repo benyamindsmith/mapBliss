@@ -56,7 +56,7 @@ DISCLAIMER: the `_flex()` functions offer more flexibility in label placement an
 \details{
 DOCUMENTATION IS NEEDED
 
-Plot multiple stops on a route `plot_route`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`.
+Plot multiple stops on a route `plot_route_flex()`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`.
 
 For more information on how to integrate the MapBox API to make beautiful maps, check out [this blog](https://bensstats.wordpress.com/2021/10/25/robservations-16-using-the-mapbox-api-with-leaflet/).
 }

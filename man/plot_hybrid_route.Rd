@@ -79,7 +79,7 @@ DISCLAIMER: the `_flex()` functions offer more flexibility in label placement an
 \details{
 DOCUMENTATION IS NEEDED
 
-Plot multiple stops on a route `plot_hybrid route()`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`. This function differs from `plot_route()`  and `plot_flights()`  as it accomidates a hybrid route where some locations are traveled via flight and others are traveled via car, bike or foot.
+Plot multiple stops on a route `plot_hybrid route_flex()`. This function produces a html object so in order to save the image as an .svg (for printable visuals) check out the `save_map_svg()`. This function differs from `plot_route_flex()`  and `plot_flights_flex()`  as it accommodates a hybrid route where some locations are traveled via flight and others are traveled via car, bike or foot.
 }
 \examples{
 plot_hybrid_route(c("Detroit","Toronto","MKE"),
