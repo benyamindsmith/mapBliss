@@ -2,7 +2,9 @@
 
 Create beautiful maps of your adventures with Leaflet and the MapBox API in R. 
 
-**If you want to learn how you can contribute to this project, feel free to contact me via my [website](https://bensstats.wordpress.com)**
+**If you want to learn how you can contribute to this project, feel free to contact me via my [website](https://bensstats.wordpress.com)**.
+
+**Do you see have a feature idea that you think would make mapBliss better? Feel free to [open an issue](https://github.com/benyamindsmith/mapBliss/issues) and make a feature request!**
 
 ## Introduction
 
