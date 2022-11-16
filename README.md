@@ -13,9 +13,13 @@ For some background on how this package came to be and for updates. Feel free to
 ## Cronology and Updates
 
 1.[I reverse-engineered Atlas.co (well, some of it)](https://bensstats.wordpress.com/2021/10/21/robservations-15-i-reverse-engineered-atlas-co-well-some-of-it/)
+
 2.[Using the MapBox API with Leaflet](https://bensstats.wordpress.com/2021/10/25/robservations-16-using-the-mapbox-api-with-leaflet/)
+
 3.[Plotting Flight Paths on Leaflet Maps](https://bensstats.wordpress.com/2021/11/16/robservations-17-plotting-flight-paths-on-leaflet-maps/)
+
 4.[**Packaging My Route Map Code! Introducting mapBliss.**](https://bensstats.wordpress.com/2022/10/28/robservations-40-packaging-my-route-map-code-introducting-mapbliss/)
+
 
 
 ## Table of Contents
