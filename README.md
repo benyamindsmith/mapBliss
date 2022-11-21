@@ -20,7 +20,7 @@ For some background on how this package came to be and for updates. Feel free to
 
 3. [Plotting Flight Paths on Leaflet Maps](https://bensstats.wordpress.com/2021/11/16/robservations-17-plotting-flight-paths-on-leaflet-maps/)
 
-4. [**Packaging My Route Map Code! Introducting mapBliss.**](https://bensstats.wordpress.com/2022/10/28/robservations-40-packaging-my-route-map-code-introducting-mapbliss/)
+4. [**Packaging My Route Map Code! Introducing mapBliss.**](https://bensstats.wordpress.com/2022/10/28/robservations-40-packaging-my-route-map-code-introducting-mapbliss/)
 
 
 
