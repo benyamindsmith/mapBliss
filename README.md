@@ -22,6 +22,7 @@ For some background on how this package came to be and for updates. Feel free to
 
 4. [**Packaging My Route Map Code! Introducing mapBliss.**](https://bensstats.wordpress.com/2022/10/28/robservations-40-packaging-my-route-map-code-introducting-mapbliss/)
 
+5. [Control Individual Label Positions In mapBliss With `_flex()` Functions](https://bensstats.wordpress.com/2022/11/23/robservations-43-control-individual-label-positions-in-mapbliss-with-_flex-functions/)
 
 
 ## Table of Contents
