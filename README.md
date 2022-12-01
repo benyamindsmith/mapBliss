@@ -39,7 +39,7 @@ devtools::install_github("benyamindsmith/mapBliss")
 
 ### Dependencies
 
-This package depends requires the following packages: 
+This package depends on the following packages: 
 
 * [dplyr](https://dplyr.tidyverse.org)
 * [purrr](https://purrr.tidyverse.org)
