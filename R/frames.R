@@ -7,8 +7,10 @@ frame_1<- function(map,
                    title_text="Title",
                    subtitle_text = "Subtitle",
                    title_font="Brush Script MT",
-                   subtitle_font = "Trebuchet MS"
-                   ){
+                   subtitle_font = "Trebuchet MS",
+                   frame_width = "100%",
+                   frame_height = 800
+){
   ui <-
     fillPage(
       ## see various ways of including CSS: https://shiny.rstudio.com/articles/css.html
@@ -22,7 +24,8 @@ frame_1<- function(map,
                    }
 
                   .fancy_border{border:25px solid;
-                                border-color: #f0f0f099;}
+                                border-color: #f0f0f099;
+                                }
                   .title_text{top:-5rem;
                               font-family:", title_font,";
                               text-align: center;}
@@ -34,11 +37,11 @@ frame_1<- function(map,
         )
       ),
       div(class = 'fancy_border', ## set CSS class to style border
-          div(leafletOutput('map')),
+          div(leafletOutput('map',width= frame_width, height=frame_height)),
           div(id = 'greetings',
               uiOutput('message'))
-      )
-    )
+
+      ))
 
 
 
@@ -55,3 +58,4 @@ frame_1<- function(map,
   }
   shinyApp(ui, server)
 }
+
