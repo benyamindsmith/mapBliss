@@ -9,9 +9,35 @@ frame_1(
   title_text = "Title",
   subtitle_text = "Subtitle",
   title_font = "Brush Script MT",
-  subtitle_font = "Trebuchet MS"
+  subtitle_font = "Trebuchet MS",
+  frame_width = "100\%",
+  frame_height = 780
 )
 }
+\arguments{
+\item{map}{a map you created with mapBliss or leaflet}
+
+\item{title_text}{Title text}
+
+\item{subtitle_text}{Subtitle text}
+
+\item{title_font}{Title font}
+
+\item{subtitle_font}{Subtitle font}
+
+\item{frame_width}{Set by default to "100%". It is recommended not to change this.}
+
+\item{frame_height}{Set by default to 800 so as to fill the default shiny screen. Update according to your needs.}
+}
 \description{
-NEED TO ADD DESCRIPTION
+Put your maps in a customized frame with `frame_*()`.
+}
+\details{
+DOCUMENTATION IS NEEDED
+
+`frame_1()` is a basic white square frame.
+}
+\examples{
+plot_city_view("Jersalem, IL") |>
+ frame_1(title_text="Jerusalem", subtitle_text="City of Gold", subtitle_font="Brush Script MT")
 }
