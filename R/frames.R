@@ -36,11 +36,11 @@ frame_1<- function(map,
                    top:-8rem;
                    position:bottom;
                    z-index:1000;
-                   background-color:#f0f0f099;
+                   background-color:#ffffff;
                    }
 
                   .fancy_border{border:25px solid;
-                                border-color: #f0f0f099;
+                                border-color: #ffffff;
                                 }
                   .title_text{top:-5rem;
                               font-family:", title_font,";
