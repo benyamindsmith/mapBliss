@@ -28,4 +28,10 @@ viz<- plot_route(c("Toronto","Niagara Falls","Monsey"),
 save_map_svg(viz)
 ## Deleting file for package speifics
 file.remove("Rplot.svg")
+
+plot_city_view("Jersalem, IL") |>
+ frame_1(title_text="Jerusalem", subtitle_text="City of Gold", subtitle_font="Brush Script MT")|>
+ save_map_frame_svg()
+## Deleting file for package speifics
+file.remove("Rplot.svg")
 }
