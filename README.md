@@ -54,6 +54,7 @@ This package depends on the following packages:
 * [webshot](https://wch.github.io/webshot/articles/intro.html)
 * [htmlwidgets](https://github.com/ramnathv/htmlwidgets)
 * [magick](https://github.com/ropensci/magick)
+* [shiny](https://cran.r-project.org/web/packages/shiny/index.html)
 
 ### Some Example Visuals
 
