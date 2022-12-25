@@ -5,10 +5,10 @@
 #'@param viz The viz you created with plot_route or plot_flights.
 #'@param svg_name The name of the file you want to call
 #'@param zoom How much you want to zoom in on your map. I find that setting `zoom=3` works best but try it out yourself to see what works.
-#'@param map
-#'@param delay
-#'@param vwidth
-#'@param vheight
+#'@param map for `frame_*` functions. A framed map.
+#'@param delay for `frame_*` functions. Delay (in seconds) before taking the mop screenshot. Set by default to 10 seconds.
+#'@param vwidth for `frame_*` functions.
+#'@param vheight for `frame_*` functions.
 #'@import magick
 #'@import webshot
 #'@import htmlwidgets
