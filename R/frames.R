@@ -12,7 +12,6 @@
 #' @param title_font Title font
 #' @param subtitle_font Subtitle font
 #' @param frame_width Set by default to 100 percent. It is recommended not to change this.
-#' @param full_height The shiny screen. Set by default to 900
 #' @param frame_height Set by default to 790 so as to fill the default shiny screen. Update according to your needs.
 #' @import shiny
 #' @export
@@ -27,7 +26,6 @@ frame_1<- function(map,
                    title_font="Brush Script MT",
                    subtitle_font = "Trebuchet MS",
                    frame_width = "100%",
-                   full_height = 1000,
                    frame_height = 780
 ){
   ui <-
@@ -75,5 +73,5 @@ frame_1<- function(map,
     )
 
   }
-  shinyApp(ui, server,options = list(height = full_height))
+  shinyApp(ui, server)
 }
