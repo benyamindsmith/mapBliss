@@ -1,6 +1,6 @@
 #' Put Map In A Custom Frame
 #'
-#' Put your maps in a customized frame with `frame_*()`.
+#' Put your maps in a customized frame with `frame_*()` functions.
 #'
 #' DOCUMENTATION IS NEEDED
 #'
