@@ -54,6 +54,7 @@ This package depends on the following packages:
 * [webshot](https://wch.github.io/webshot/articles/intro.html)
 * [htmlwidgets](https://github.com/ramnathv/htmlwidgets)
 * [magick](https://github.com/ropensci/magick)
+* [shiny](https://cran.r-project.org/web/packages/shiny/index.html)
 
 ### Some Example Visuals
 
@@ -63,7 +64,8 @@ The following are just some screen shots of the images that can be produced. It 
 
 ![image](https://user-images.githubusercontent.com/46410142/199815517-4da0d3f8-84a6-482c-83e7-c4e33d0dce7b.png)
 
-<img src='https://user-images.githubusercontent.com/46410142/191990637-8d24eb7d-a96d-4f68-83a3-ba9f4240dfb4.png' /></a>
+![image](https://user-images.githubusercontent.com/46410142/209036056-2a80922c-485a-4fe7-af81-abf575649d8c.png)
+
 
 <img src='https://user-images.githubusercontent.com/46410142/191990873-c3df1335-4875-47af-8d4e-dd06fe973f67.png' /></a>
 
