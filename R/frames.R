@@ -12,7 +12,7 @@
 #' @param title_font Title font
 #' @param subtitle_font Subtitle font
 #' @param frame_width Set by default to 100 percent. It is recommended not to change this.
-#' @param frame_height Set by default to 790 so as to fill the default shiny screen. Update according to your needs.
+#' @param frame_height Set by default to 780 so as to fill the default shiny screen. Update according to your needs.
 #' @import shiny
 #' @export
 #' @examples
