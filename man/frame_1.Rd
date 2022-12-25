@@ -11,7 +11,6 @@ frame_1(
   title_font = "Brush Script MT",
   subtitle_font = "Trebuchet MS",
   frame_width = "100\%",
-  full_height = 1000,
   frame_height = 780
 )
 }
@@ -27,8 +26,6 @@ frame_1(
 \item{subtitle_font}{Subtitle font}
 
 \item{frame_width}{Set by default to 100 percent. It is recommended not to change this.}
-
-\item{full_height}{The shiny screen. Set by default to 900}
 
 \item{frame_height}{Set by default to 790 so as to fill the default shiny screen. Update according to your needs.}
 }
