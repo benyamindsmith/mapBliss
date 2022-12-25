@@ -27,10 +27,10 @@ frame_1(
 
 \item{frame_width}{Set by default to 100 percent. It is recommended not to change this.}
 
-\item{frame_height}{Set by default to 790 so as to fill the default shiny screen. Update according to your needs.}
+\item{frame_height}{Set by default to 780 so as to fill the default shiny screen. Update according to your needs.}
 }
 \description{
-Put your maps in a customized frame with `frame_*()`.
+Put your maps in a customized frame with `frame_*()` functions.
 }
 \details{
 DOCUMENTATION IS NEEDED
