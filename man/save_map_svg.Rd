@@ -12,14 +12,6 @@ save_map_svg(viz, svg_name = "Rplot.svg", zoom = 3)
 \item{svg_name}{The name of the file you want to call}
 
 \item{zoom}{How much you want to zoom in on your map. I find that setting `zoom=3` works best but try it out yourself to see what works.}
-
-\item{map}{for `frame_*` functions. A framed map.}
-
-\item{delay}{for `frame_*` functions. Delay (in seconds) before taking the mop screenshot. Set by default to 10 seconds.}
-
-\item{vwidth}{for `frame_*` functions.}
-
-\item{vheight}{for `frame_*` functions.}
 }
 \description{
 Save map as .svg file for high quality printing!
@@ -34,12 +26,6 @@ viz<- plot_route(c("Toronto","Niagara Falls","Monsey"),
                   weight=1.5)
 
 save_map_svg(viz)
-## Deleting file for package speifics
-file.remove("Rplot.svg")
-
-plot_city_view("Jersalem, IL") |>
- frame_1(title_text="Jerusalem", subtitle_text="City of Gold", subtitle_font="Brush Script MT")|>
- save_map_frame_svg()
 ## Deleting file for package speifics
 file.remove("Rplot.svg")
 }

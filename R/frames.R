@@ -54,7 +54,9 @@ frame_1<- function(map,
         )
       ),
       div(class = 'fancy_border', ## set CSS class to style border
-          div(leafletOutput('map',width= frame_width, height=frame_height)),
+          div(leafletOutput('map',
+                            width= frame_width,
+                            height=frame_height)),
           div(id = 'greetings',
               uiOutput('message'))
 
