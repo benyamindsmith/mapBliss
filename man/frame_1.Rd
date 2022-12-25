@@ -26,7 +26,7 @@ frame_1(
 
 \item{subtitle_font}{Subtitle font}
 
-\item{frame_width}{Set by default to "100%". It is recommended not to change this.}
+\item{frame_width}{Set by default to 100 percent. It is recommended not to change this.}
 
 \item{full_height}{The shiny screen. Set by default to 900}
 
@@ -41,6 +41,7 @@ DOCUMENTATION IS NEEDED
 `frame_1()` is a basic white square frame.
 }
 \examples{
+
 plot_city_view("Jersalem, IL") |>
  frame_1(title_text="Jerusalem", subtitle_text="City of Gold", subtitle_font="Brush Script MT")
 }
