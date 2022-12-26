@@ -1,6 +1,6 @@
 # mapBliss <a href='https://github.com/benyamindsmith/mapBliss'><img src='https://github.com/benyamindsmith/mapBliss/blob/main/mapBliss.png' align="right" height="300" /></a>
 
-Create beautiful maps of your adventures with Leaflet and the MapBox API in R. 
+Create beautiful maps of your adventures with Leaflet in R. 
 
 **If you want to learn how you can contribute to this project, feel free to contact me via my [website](https://bensstats.wordpress.com)**.
 
