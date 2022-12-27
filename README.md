@@ -24,6 +24,7 @@ For some background on how this package came to be and for updates. Feel free to
 
 5. [Control Individual Label Positions In mapBliss With `_flex()` Functions](https://bensstats.wordpress.com/2022/11/23/robservations-43-control-individual-label-positions-in-mapbliss-with-_flex-functions/)
 
+6. [Adding Frame and Custom Title Support To mapBliss](https://bensstats.wordpress.com/2022/12/27/robservations-44-adding-frame-and-custom-title-support-to-mapbliss/)
 
 ## Table of Contents
 
