@@ -14,13 +14,14 @@ Table of Contents
 </summary>
 
 * [Introduction](https://github.com/benyamindsmith/mapBliss/main/README.md#introduction)
+ 
+* [Cronology and Updates](https://github.com/benyamindsmith/mapBliss/main/README.md#cronology-and-updates)
 
 * [Installing This Package](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#installing-this-package)
 
 * [Dependencies](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#dependencies)
 
 * [Some Example Visuals](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#some-example-visuals)
-
 </details>
 
 <details>
@@ -28,8 +29,7 @@ Table of Contents
 <h2>
 Introduction
 </h2>
-<summary>
-
+</summary>
 This package is based functions I created for creating print-quality souvenir maps like the ones you can find on [Atlas.co](atlas.co/products/map).
 
 For some background on how this package came to be and for updates. Feel free to check out my blogs on the topic [here](https://bensstats.wordpress.com/?s=atlas), or see the relevant links in [Cronology and Updates](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#cronology-and-updates)
