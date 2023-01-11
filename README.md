@@ -6,13 +6,41 @@ Create beautiful maps of your adventures with Leaflet in R.
 
 **Do you see have a feature idea that you think would make mapBliss better? Feel free to [open an issue](https://github.com/benyamindsmith/mapBliss/issues) and make a feature request!**
 
-## Introduction
+<details>
+<summary>
+<h2>
+Table of Contents
+</h2>
+</summary>
+
+* [Introduction](https://github.com/benyamindsmith/mapBliss/main/README.md#introduction)
+
+* [Installing This Package](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#installing-this-package)
+
+* [Dependencies](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#dependencies)
+
+* [Some Example Visuals](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#some-example-visuals)
+
+</details>
+
+<details>
+<summary>
+<h2>
+Introduction
+</h2>
+<summary>
 
 This package is based functions I created for creating print-quality souvenir maps like the ones you can find on [Atlas.co](atlas.co/products/map).
 
 For some background on how this package came to be and for updates. Feel free to check out my blogs on the topic [here](https://bensstats.wordpress.com/?s=atlas), or see the relevant links in [Cronology and Updates](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#cronology-and-updates)
+</details>
 
-## Cronology and Updates
+<details>
+<summary>
+<h2>
+Cronology and Updates
+<h2>
+</summary>
 
 1. [I reverse-engineered Atlas.co (well, some of it)](https://bensstats.wordpress.com/2021/10/21/robservations-15-i-reverse-engineered-atlas-co-well-some-of-it/)
 
@@ -25,12 +53,8 @@ For some background on how this package came to be and for updates. Feel free to
 5. [Control Individual Label Positions In mapBliss With `_flex()` Functions](https://bensstats.wordpress.com/2022/11/23/robservations-43-control-individual-label-positions-in-mapbliss-with-_flex-functions/)
 
 6. [Adding Frame and Custom Title Support To mapBliss](https://bensstats.wordpress.com/2022/12/27/robservations-44-adding-frame-and-custom-title-support-to-mapbliss/)
+</details>
 
-## Table of Contents
-
-* [Installing This Package](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#installing-this-package)
-* [Dependencies](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#dependencies)
-* [Some Example Visuals](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#some-example-visuals)
 
 ### Installing This Package
 
@@ -38,8 +62,12 @@ For some background on how this package came to be and for updates. Feel free to
 devtools::install_github("benyamindsmith/mapBliss")
 ```
 
-### Dependencies
-
+<details>
+<summary>
+<h3>
+Dependencies
+</h3>
+</summary>
 This package depends on the following packages: 
 
 * [dplyr](https://dplyr.tidyverse.org)
@@ -57,9 +85,14 @@ This package depends on the following packages:
 * [magick](https://github.com/ropensci/magick)
 * [shiny](https://cran.r-project.org/web/packages/shiny/index.html)
 
-### Some Example Visuals
+</details>
 
-
+<details>
+<summary>
+<h3>
+ Some Example Visuals
+</h3>
+</summary>
 The following are just some screen shots of the images that can be produced. It is possible to create a map and save it as .svg file for a sharper image.
 
 
@@ -76,4 +109,4 @@ The following are just some screen shots of the images that can be produced. It 
 
 <img src='https://user-images.githubusercontent.com/46410142/197111466-3ccfe2c4-7e51-4c91-92d8-774a37c3c120.png' /></a>
 
-
+</details>
