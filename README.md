@@ -6,6 +6,7 @@ Create beautiful maps of your adventures with Leaflet in R.
 
 **Do you see have a feature idea that you think would make mapBliss better? Feel free to [open an issue](https://github.com/benyamindsmith/mapBliss/issues) and make a feature request!**
 
+**If you are interested in making star maps, check out [`starBliss`](https://github.com/benyamindsmith/starBliss)**
 <details>
 <summary>
 <h2>
