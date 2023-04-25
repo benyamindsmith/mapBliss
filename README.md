@@ -31,6 +31,7 @@ Table of Contents
 Introduction
 </h2>
 </summary>
+
 This package is based functions I created for creating print-quality souvenir maps like the ones you can find on [Atlas.co](atlas.co/products/map).
 
 For some background on how this package came to be and for updates. Feel free to check out my blogs on the topic [here](https://bensstats.wordpress.com/?s=atlas), or see the relevant links in [Cronology and Updates](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#cronology-and-updates)
