@@ -14,6 +14,9 @@
 #' @param frame_width Set by default to 100 percent. It is recommended not to change this.
 #' @param frame_height Set by default to 780 so as to fill the default shiny screen. Update according to your needs.
 #' @import shiny
+#' @import magrittr
+#' @import magick
+#' @import mapshot
 #' @export
 #' @examples
 #'
@@ -54,9 +57,10 @@ frame_1<- function(map,
         )
       ),
       div(class = 'fancy_border', ## set CSS class to style border
-          div(leafletOutput('map',
+          div(imageOutput("img",
                             width= frame_width,
-                            height=frame_height)),
+                            height=frame_height),
+                          align="center"),
           div(id = 'greetings',
               uiOutput('message'))
 
@@ -65,9 +69,36 @@ frame_1<- function(map,
 
 
   server <- function(input, output) {
-    output$map <- renderLeaflet({
-      map
-    })
+    output$img <- renderImage({
+
+      # create a tempdir
+      myDir = tempdir()
+
+      # save map as png file
+      mapshot(map,file = paste0(myDir,"map.png"))
+      mymap <- image_read(paste0(myDir,"map.png"))
+      img_info_mymap <- image_info(mymap)
+
+      # load mask and resize
+      mask <- image_read('masks/circular_mask.png')
+      mask_resized <- mask %>%
+                        image_resize(paste0("x",img_info_mymap$height)) %>%
+                        image_extent(paste0(img_info_mymap$width,"x",img_info_mymap$height),color='white')
+
+      # create inverted mask
+      mask_inv_resized <- image_negate(mask_resized)
+
+      masked_map <- image_composite(mymap, mask_inv_resized, gravity='center', operator='Multiply')
+
+      tmpfile <-
+        masked_map %>%
+        image_composite(., mask_resized, gravity='center', operator='Add') %>%
+        image_write('masked_map.jpg', format = 'jpg')
+
+      list(src = "masked_map.jpg", contentType = "image/jpeg")
+    }, deleteFile = TRUE)
+
+
     ## note that you can also add CSS classes here:
     output$message <- renderUI(tagList(
       h1(title_text, class='title_text'),
