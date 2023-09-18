@@ -45,6 +45,7 @@ frame_1<- function(map,
 
                   .fancy_border{border:25px solid;
                                 border-color: #ffffff;
+                                #background-color: #7da2d1; <- to test transparancy
                                 }
                   .title_text{top:-5rem;
                               font-family:", title_font,";
@@ -60,7 +61,7 @@ frame_1<- function(map,
           div(imageOutput("img",
                             width= frame_width,
                             height=frame_height),
-                          align="center"),
+                          align = "center"),
           div(id = 'greetings',
               uiOutput('message'))
 
@@ -81,6 +82,7 @@ frame_1<- function(map,
 
       # load mask and resize
       mask <- image_read('masks/circular_mask.png')
+      #mask <- image_read('masks/house_mask.png') # <- it works with any b&w mask
       mask_resized <- mask %>%
                         image_resize(paste0("x",img_info_mymap$height)) %>%
                         image_extent(paste0(img_info_mymap$width,"x",img_info_mymap$height),color='white')
@@ -88,14 +90,13 @@ frame_1<- function(map,
       # create inverted mask
       mask_inv_resized <- image_negate(mask_resized)
 
-      masked_map <- image_composite(mymap, mask_inv_resized, gravity='center', operator='Multiply')
-
+      # remove the masked area from the map
       tmpfile <-
-        masked_map %>%
-        image_composite(., mask_resized, gravity='center', operator='Add') %>%
-        image_write('masked_map.jpg', format = 'jpg')
+        image_channel(mask_inv_resized, "lightness") %>%
+        image_composite(mymap, ., gravity='center', operator='CopyOpacity') %>%
+        image_write('masked_map.png', format = 'png')
 
-      list(src = "masked_map.jpg", contentType = "image/jpeg")
+      list(src = "masked_map.png", contentType = "image/png")
     }, deleteFile = TRUE)
 
 
