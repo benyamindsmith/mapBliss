@@ -95,13 +95,14 @@ frame_1<- function(map,
         image_blur(0, 0.6) %>%
         image_convert(type="Bilevel") %>%
         image_morphology('Dilate', "Octagon", iter=4) %>%
-        image_negate()
+        image_negate() %>%
+        image_transparent("white")
 
       # remove the masked area from the map, and add the border
       tmpfile <-
         image_channel(mask_inv_resized, "lightness") %>%
         image_composite(mymap, ., gravity='center', operator='CopyOpacity') %>%
-        image_composite(mask_outline, operator='Add') %>%
+        image_composite(mask_outline, operator='Plus') %>%
         image_write('masked_map.png', format = 'png')
 
       list(src = "masked_map.png", contentType = "image/png")
