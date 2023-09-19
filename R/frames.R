@@ -13,6 +13,7 @@
 #' @param subtitle_font Subtitle font
 #' @param frame_width Set by default to 100 percent. It is recommended not to change this.
 #' @param frame_height Set by default to 780 so as to fill the default shiny screen. Update according to your needs.
+#' @param mask The function will look in masks/ for a PNG file with the same name. Defaults to circular_mask.
 #' @import shiny
 #' @import magrittr
 #' @import magick
@@ -21,15 +22,19 @@
 #' @examples
 #'
 #' plot_city_view("Jersalem, IL") |>
-#'  frame_1(title_text="Jerusalem", subtitle_text="City of Gold", subtitle_font="Brush Script MT")
+#'   frame_1(title_text="Jerusalem", subtitle_text="City of Gold", subtitle_font="Brush Script MT")
+#'
+#' plot_city_view("Amsterdam") |>
+#'   frame_1(title_text="Amsterdam", mask="house_mask")
 
 frame_1<- function(map,
-                   title_text="Title",
-                   subtitle_text = "Subtitle",
-                   title_font="Brush Script MT",
+                   title_text = "Title",
+                   subtitle_text = "",
+                   title_font = "Brush Script MT",
                    subtitle_font = "Trebuchet MS",
                    frame_width = "100%",
-                   frame_height = 780
+                   frame_height = 780,
+                   mask = "circular_mask"
 ){
   ui <-
     fillPage(
@@ -81,9 +86,13 @@ frame_1<- function(map,
       img_info_mymap <- image_info(mymap)
 
       # load mask and resize
-      mask <- image_read('masks/circular_mask.png')
-      #mask <- image_read('masks/house_mask.png') # <- it works with any b&w mask
-      mask_resized <- mask %>%
+      if(file.exists(paste0('masks/', mask, '.png'))){
+        mymask <- image_read(paste0('masks/', mask, '.png'))
+      } else {
+        print(paste0('Cannot find the file masks/', mask, '.png'))
+        mymask <- image_read('masks/circular_mask.png')
+      }
+      mask_resized <- mymask %>%
                         image_resize(paste0("x",img_info_mymap$height*.9)) %>%
                         image_extent(paste0(img_info_mymap$width,"x",img_info_mymap$height),color='white')
 
