@@ -16,7 +16,7 @@
 #' @import shiny
 #' @import magrittr
 #' @import magick
-#' @import mapshot
+#' @import mapview
 #' @export
 #' @examples
 #'
@@ -84,16 +84,24 @@ frame_1<- function(map,
       mask <- image_read('masks/circular_mask.png')
       #mask <- image_read('masks/house_mask.png') # <- it works with any b&w mask
       mask_resized <- mask %>%
-                        image_resize(paste0("x",img_info_mymap$height)) %>%
+                        image_resize(paste0("x",img_info_mymap$height*.9)) %>%
                         image_extent(paste0(img_info_mymap$width,"x",img_info_mymap$height),color='white')
 
       # create inverted mask
       mask_inv_resized <- image_negate(mask_resized)
 
-      # remove the masked area from the map
+      # get outline, to allow a border
+      mask_outline <- image_canny(mask_inv_resized, geometry = "0x.5+30%+30%")  %>%
+        image_blur(0, 0.6) %>%
+        image_convert(type="Bilevel") %>%
+        image_morphology('Dilate', "Octagon", iter=4) %>%
+        image_negate()
+
+      # remove the masked area from the map, and add the border
       tmpfile <-
         image_channel(mask_inv_resized, "lightness") %>%
         image_composite(mymap, ., gravity='center', operator='CopyOpacity') %>%
+        image_composite(mask_outline, operator='Add') %>%
         image_write('masked_map.png', format = 'png')
 
       list(src = "masked_map.png", contentType = "image/png")
