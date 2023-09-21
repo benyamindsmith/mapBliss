@@ -1,10 +1,7 @@
 #' Put Map In A Custom Frame
 #'
-#' Put your maps in a customized frame with `frame_*()` functions.
+#' Put your maps in a customized frame with `map_frame()` functions.
 #'
-#' DOCUMENTATION IS NEEDED
-#'
-#' `frame_1()` is a basic white square frame.
 #'
 #' @param map a map you created with mapBliss or leaflet
 #' @param title_text Title text
@@ -22,12 +19,12 @@
 #' @examples
 #'
 #' plot_city_view("Jersalem, IL") |>
-#'   frame_1(title_text="Jerusalem", subtitle_text="City of Gold", subtitle_font="Brush Script MT")
+#'   map_frame(title_text="Jerusalem", subtitle_text="City of Gold", subtitle_font="Brush Script MT")
 #'
 #' plot_city_view("Amsterdam") |>
-#'   frame_1(title_text="Amsterdam", mask="house_mask")
+#'   map_frame(title_text="Amsterdam", mask="house_mask")
 
-frame_1<- function(map,
+map_frame<- function(map,
                    title_text = "Title",
                    subtitle_text = "",
                    title_font = "Brush Script MT",
