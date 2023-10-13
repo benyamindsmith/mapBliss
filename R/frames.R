@@ -12,35 +12,37 @@
 #' @param title_font Title font
 #' @param subtitle_font Subtitle font
 #' @param frame_width Set by default to 100 percent. It is recommended not to change this.
-#' @param frame_height Set by default to 780 so as to fill the default shiny screen. Update according to your needs.
-#' @param mask The function will look in masks/ for a PNG file with the same name. Defaults to circular_mask.
+#' @param frame_height Set by default to 700 so as to fill the default shiny screen. Update according to your needs.
 #' @import shiny
-#' @import magrittr
-#' @import magick
-#' @import mapview
 #' @export
 #' @examples
 #'
 #' plot_city_view("Jersalem, IL") |>
-#'   frame_1(title_text="Jerusalem", subtitle_text="City of Gold", subtitle_font="Brush Script MT")
-#'
-#' plot_city_view("Amsterdam") |>
-#'   frame_1(title_text="Amsterdam", mask="house_mask")
+#'  frame_1(title_text="Jerusalem", subtitle_text="City of Gold", subtitle_font="Brush Script MT")
+
+# https://community.rstudio.com/t/solved-error-when-using-mapshot-with-shiny-leaflet/6765/5
 
 frame_1<- function(map,
-                   title_text = "Title",
-                   subtitle_text = "",
-                   title_font = "Brush Script MT",
+                   title_text="Title",
+                   subtitle_text = "Subtitle",
+                   title_font="Brush Script MT",
                    subtitle_font = "Trebuchet MS",
                    frame_width = "100%",
-                   frame_height = 780,
-                   mask = "circular_mask"
+                   frame_height = 700
 ){
   ui <-
     fillPage(
-      ## see various ways of including CSS: https://shiny.rstudio.com/articles/css.html
-      tags$head(
-        tags$style(HTML(paste0("
+      #titlePanel("Plot or Example?"),
+      sidebarLayout(
+        sidebarPanel(
+          selectInput('selectMask','Select Mask',choice = list.files('masks/')),
+          checkboxInput("checkbox", label = "Apply mask", value=FALSE),
+          width = 2),
+        mainPanel(
+          conditionalPanel(
+            condition = "!input.checkbox",
+            tags$head(
+              tags$style(HTML(paste0("
                   #greetings{
                    top:-8rem;
                    position:bottom;
@@ -50,7 +52,6 @@ frame_1<- function(map,
 
                   .fancy_border{border:25px solid;
                                 border-color: #ffffff;
-                                #background-color: #7da2d1; <- to test transparancy
                                 }
                   .title_text{top:-5rem;
                               font-family:", title_font,";
@@ -59,42 +60,98 @@ frame_1<- function(map,
                               font-family:",subtitle_font,";
                               text-align: center;
                   }
-      "))
+                  "))
+              )
+            ),
+            div(class = 'fancy_border', ## set CSS class to style border
+                div(leafletOutput('map',
+                                  width= frame_width,
+                                  height=frame_height)),
+                div(id = 'greetings',
+                    uiOutput('message1'))
+
+            )
+          ),
+          conditionalPanel(
+            condition = "input.checkbox",
+            tags$head(
+              tags$style(HTML(paste0("
+                  #greetings{
+                   top:-8rem;
+                   position:bottom;
+                   z-index:1000;
+                   background-color:#ffffff;
+                   }
+
+                  .fancy_border{border:25px solid;
+                                border-color: #ffffff;
+                                }
+                  .title_text{top:-5rem;
+                              font-family:", title_font,";
+                              text-align: center;}
+                  .subtitle_text{
+                              font-family:",subtitle_font,";
+                              text-align: center;
+                  }
+                  "))
+              )
+            ),
+            div(class = 'fancy_border', ## set CSS class to style border
+                div(imageOutput("img",
+                                width= frame_width,
+                                height=frame_height),
+                    align = "center"),
+                div(id = 'greetings',
+                    uiOutput('message2'))
+
+            )
+          )
         )
-      ),
-      div(class = 'fancy_border', ## set CSS class to style border
-          div(imageOutput("img",
-                            width= frame_width,
-                            height=frame_height),
-                          align = "center"),
-          div(id = 'greetings',
-              uiOutput('message'))
-
-      ))
+      )
+    )
 
 
 
-  server <- function(input, output) {
+
+  server <- function(input, output, session) {
+    map_reactive <- reactive({
+      map
+    })
+
+    output$map <- renderLeaflet({
+      map_reactive()
+    })
+
+    user_created_map <- reactive({
+      map_reactive() %>%
+        setView(lng = input$map_center$lng, lat = input$map_center$lat,
+                zoom = input$map_zoom)
+    })
+
     output$img <- renderImage({
+      req(input$checkbox)
 
       # create a tempdir
       myDir = tempdir()
 
-      # save map as png file
-      mapshot(map,file = paste0(myDir,"map.png"))
+      # save map as png file, read it and resize height to frame_height
+      mapshot(user_created_map(),file = paste0(myDir,"map.png"))
       mymap <- image_read(paste0(myDir,"map.png"))
+      mymap <- mymap %>%
+        image_resize(paste0("x",frame_height))
+
       img_info_mymap <- image_info(mymap)
 
       # load mask and resize
-      if(file.exists(paste0('masks/', mask, '.png'))){
-        mymask <- image_read(paste0('masks/', mask, '.png'))
+      if(file.exists(paste0('masks/', input$selectMask ))){
+        mymask <- image_read(paste0('masks/', input$selectMask)) #, '.png'))
       } else {
-        print(paste0('Cannot find the file masks/', mask, '.png'))
+        print(paste0('Cannot find the file masks/', input$selectMask ))
         mymask <- image_read('masks/circular_mask.png')
       }
       mask_resized <- mymask %>%
-                        image_resize(paste0("x",img_info_mymap$height*.9)) %>%
-                        image_extent(paste0(img_info_mymap$width,"x",img_info_mymap$height),color='white')
+        image_resize(paste0("x",img_info_mymap$height*.9)) %>%
+        image_extent(paste0(img_info_mymap$width,"x",img_info_mymap$height),color='white')
 
       # create inverted mask
       mask_inv_resized <- image_negate(mask_resized)
@@ -117,9 +174,12 @@ frame_1<- function(map,
       list(src = "masked_map.png", contentType = "image/png")
     }, deleteFile = TRUE)
 
-
     ## note that you can also add CSS classes here:
-    output$message <- renderUI(tagList(
+    output$message1 <- renderUI(tagList(
+      h1(title_text, class='title_text'),
+      h3(subtitle_text, class='subtitle_text'))
+    )
+    output$message2 <- renderUI(tagList(
       h1(title_text, class='title_text'),
       h3(subtitle_text, class='subtitle_text'))
     )
