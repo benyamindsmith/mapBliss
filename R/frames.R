@@ -138,7 +138,7 @@ map_frame<- function(map,
 
       # load mask and resize
       if(file.exists(paste0('masks/', input$selectMask ))){
-        mymask <- image_read(paste0('masks/', input$selectMask)) #, '.png'))
+        mymask <- image_read(paste0('masks/', input$selectMask))
       } else {
         print(paste0('Cannot find the file masks/', input$selectMask ))
         mymask <- image_read('masks/circular_mask.png')
