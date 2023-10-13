@@ -1,10 +1,7 @@
 #' Put Map In A Custom Frame
 #'
-#' Put your maps in a customized frame with `frame_*()` functions.
+#' Put your maps in a customized frame with `map_frame()` functions.
 #'
-#' DOCUMENTATION IS NEEDED
-#'
-#' `frame_1()` is a basic white square frame.
 #'
 #' @param map a map you created with mapBliss or leaflet
 #' @param title_text Title text
@@ -18,21 +15,18 @@
 #' @examples
 #'
 #' plot_city_view("Jersalem, IL") |>
-#'  frame_1(title_text="Jerusalem", subtitle_text="City of Gold", subtitle_font="Brush Script MT")
+#'   map_frame(title_text="Jerusalem", subtitle_text="City of Gold", subtitle_font="Brush Script MT")
 
-# https://community.rstudio.com/t/solved-error-when-using-mapshot-with-shiny-leaflet/6765/5
-
-frame_1<- function(map,
-                   title_text="Title",
+map_frame<- function(map,
+                   title_text = "Title",
                    subtitle_text = "Subtitle",
-                   title_font="Brush Script MT",
+                   title_font = "Brush Script MT",
                    subtitle_font = "Trebuchet MS",
                    frame_width = "100%",
                    frame_height = 700
 ){
   ui <-
     fillPage(
-      #titlePanel("Plot or Example?"),
       sidebarLayout(
         sidebarPanel(
           selectInput('selectMask','Select Mask',choice = list.files('masks/')),
