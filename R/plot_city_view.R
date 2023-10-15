@@ -5,7 +5,7 @@
 #' @param city The city you want to get a view of.
 #' @param mapBoxTemplate The MapBox template you want to use.
 #' @param zoomControl The zoom control for your bounding box. Format is `c(lng1,lat1,lng2,lat2)`
-#' @param icon A list containing details for your icon. Defaults to `list(show_icon=FALSE, icon_name="ios-close", icon_color="black", icon_library="ion", marker_color="red")`
+#' @param icon A list containing details for your icon (if you want one). Defaults to not having an icon. The default argument is `list(show_icon=FALSE, icon_name="ios-close", icon_color="black", icon_library="ion", marker_color="red")`. The `icon_name`, `icon_color`, `icon_library` and `marker_color` arguments correspond to the `icon`, `iconColor`, `library` and `markerColor` arguments in `leaflet::awesomeIcons()` function.
 #' @importFrom magrittr %>%
 #' @importFrom tibble tibble
 #' @importFrom tibble as_tibble
