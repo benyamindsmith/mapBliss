@@ -2,3 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
+.Rprofile
+www/
+js/
