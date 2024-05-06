@@ -34,6 +34,15 @@ Introduction
 
 This package is based functions I created for creating print-quality souvenir maps like the ones you can find on [Atlas.co](atlas.co/products/map).
 
+__Update:__ Atlas.co announced that it has shut down, (see [here](https://www.reddit.com/r/KaraAndNate/comments/16lynaf/atlasco_is_shutting_down/)). `mapBliss` is still ready to use!
+
+<details>
+<summary>
+ Screenshot of reddit post.
+</summary>
+<img src="https://github.com/benyamindsmith/mapBliss/assets/46410142/b0c7ef44-79e9-47c0-a3c6-3b3665cdad9d" />
+</details>
+
 For some background on how this package came to be and for updates. Feel free to check out my blogs on the topic [here](https://bensstats.wordpress.com/?s=atlas), or see the relevant links in [Cronology and Updates](https://github.com/benyamindsmith/mapBliss/blob/main/README.md#cronology-and-updates)
 </details>
 
