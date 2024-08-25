@@ -132,7 +132,8 @@ plot_hybrid_route_flex<- function(addresses,
               "font-family" = font,
               "font-weight" = font_weight,
               "font-size" = font_size,
-              "padding" = text_indent[i]
+              "padding" = text_indent[i],
+              "color" = colour
             )
         )
       )
