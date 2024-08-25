@@ -7,7 +7,9 @@
 plot_city_view(
   city,
   mapBoxTemplate = "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-  zoomControl = c(0.1, 0.1, -0.1, -0.1)
+  zoomControl = c(0.1, 0.1, -0.1, -0.1),
+  icon = list(show_icon = FALSE, icon_name = "ios-close", icon_color = "black",
+    icon_library = "ion", marker_color = "red")
 )
 }
 \arguments{
@@ -16,6 +18,8 @@ plot_city_view(
 \item{mapBoxTemplate}{The MapBox template you want to use.}
 
 \item{zoomControl}{The zoom control for your bounding box. Format is `c(lng1,lat1,lng2,lat2)`}
+
+\item{icon}{A list containing details for your icon (if you want one). Defaults to not having an icon. The default argument is `list(show_icon=FALSE, icon_name="ios-close", icon_color="black", icon_library="ion", marker_color="red")`. The `icon_name`, `icon_color`, `icon_library` and `marker_color` arguments correspond to the `icon`, `iconColor`, `library` and `markerColor` arguments in `leaflet::awesomeIcons()` function.}
 }
 \description{
 Plot a city view with `plot_city_view`. This essentially applies a bounding box to the MapBox template of your choosing to make a beautiful map of your favorite city!
@@ -24,5 +28,7 @@ Plot a city view with `plot_city_view`. This essentially applies a bounding box 
 
 plot_city_view("New York City")
 
-plot_city_view("Paris")
+plot_city_view("Paris", icon=list(show_icon=TRUE, icon_name="ion-heart", icon_color="white", icon_library="ion", marker_color="red"))
+
+plot_city_view("Amsterdam", zoomControl=c(0.01,0.01,-0.01,-0.01))
 }
