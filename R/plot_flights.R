@@ -39,65 +39,81 @@
 #'
 
 
-plot_flights<-function(addresses,
-                       colour="black",
-                       opacity=1,
-                       weight=1,
-                       radius=2,
-                       label_text=addresses,
-                       label_position="bottom",
-                       font = "Lucida Console",
-                       font_weight="bold",
-                       font_size= "14px",
-                       text_indent="15px",
-                       mapBoxTemplate= "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                       nCurves=100,
-                       zoomControl=c(0.1,0.1,-0.1,-0.1)){
 
+
+plot_flights <- function(addresses,
+                         colour = "black",
+                         opacity = 1,
+                         weight = 1,
+                         radius = 2,
+                         label_text = addresses,
+                         label_position = "bottom",
+                         font = "Lucida Console",
+                         font_weight = "bold",
+                         font_size = "14px",
+                         text_indent = "15px",
+                         mapBoxTemplate = "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                         nCurves = 100,
+                         zoomControl = c(0.1, 0.1, -0.1, -0.1)) {
   address_single <- tibble(singlelineaddress = addresses) %>%
-    geocode(address=singlelineaddress,method = 'arcgis') %>%
-    transmute(id = singlelineaddress,
-              lon=long,
-              lat=lat)
+    geocode(address = singlelineaddress, method = 'arcgis') %>%
+    transmute(id = singlelineaddress, lon = long, lat = lat)
 
 
-  trip <- matrix(nrow=1,ncol=2)
+  trip <- matrix(nrow = 1, ncol = 2)
 
-  for(i in 2:nrow(address_single)){
-    trip<-rbind(trip,
-                gcIntermediate(address_single[i-1,2:3],
-                               address_single[i,2:3],
-                               n=nCurves,
-                               addStartEnd = T) )
+  for (i in 2:nrow(address_single)) {
+    trip <- rbind(
+      trip,
+      gcIntermediate(
+        address_single[i - 1, 2:3],
+        address_single[i, 2:3],
+        n = nCurves,
+        addStartEnd = T
+      )
+    )
   }
-  m<-leaflet(trip,
-             options = leafletOptions(zoomControl = FALSE,
-                                      attributionControl=FALSE)) %>%
-    fitBounds(lng1 = max(address_single$lon)+zoomControl[1],
-              lat1 = max(address_single$lat)+zoomControl[2],
-              lng2 = min(address_single$lon)+zoomControl[3],
-              lat2 = min(address_single$lat)+zoomControl[4]) %>%
+  m <- leaflet(trip,
+               options = leafletOptions(zoomControl = FALSE, attributionControl =
+                                          FALSE)) %>%
+    fitBounds(
+      lng1 = max(address_single$lon) + zoomControl[1],
+      lat1 = max(address_single$lat) + zoomControl[2],
+      lng2 = min(address_single$lon) + zoomControl[3],
+      lat2 = min(address_single$lat) + zoomControl[4]
+    ) %>%
     addTiles(urlTemplate = mapBoxTemplate) %>%
-    addCircleMarkers(lat = address_single$lat,
-                     lng = address_single$lon,
-                     color = colour,
-                     stroke = FALSE,
-                     radius = radius,
-                     fillOpacity = opacity) %>%
-    addPolylines(color = colour,
-                 opacity=opacity,
-                 weight=weight,
-                 smoothFactor = 0) %>%
-    addLabelOnlyMarkers(address_single$lon,
-                        address_single$lat,
-                        label =  label_text,
-                        labelOptions = labelOptions(noHide = T,
-                                                    direction = label_position,
-                                                    textOnly = T,
-                                                    style=list("font-family" = font,
-                                                               "font-weight"= font_weight,
-                                                               "font-size"=font_size,
-                                                               "text-indent"=text_indent)))
+    addCircleMarkers(
+      lat = address_single$lat,
+      lng = address_single$lon,
+      color = colour,
+      stroke = FALSE,
+      radius = radius,
+      fillOpacity = opacity
+    ) %>%
+    addPolylines(
+      color = colour,
+      opacity = opacity,
+      weight = weight,
+      smoothFactor = 0
+    ) %>%
+    addLabelOnlyMarkers(
+      address_single$lon,
+      address_single$lat,
+      label =  label_text,
+      labelOptions = labelOptions(
+        noHide = T,
+        direction = label_position,
+        textOnly = T,
+        style = list(
+          "font-family" = font,
+          "font-weight" = font_weight,
+          "font-size" = font_size,
+          "text-indent" = text_indent,
+          "color" = colour
+        )
+      )
+    )
 
   m
 }

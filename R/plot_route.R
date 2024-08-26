@@ -43,73 +43,88 @@
 
 
 
-plot_route<-function(addresses,
-                      how=c("car","bike","foot"),
-                      colour="black",
-                      opacity=1,
-                      weight=1,
-                      radius=2,
-                      label_text=addresses,
-                      label_position="bottom",
-                      font = "Lucida Console",
-                      font_weight="bold",
-                      font_size= "14px",
-                      text_indent="15px",
-                      mapBoxTemplate= "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                      zoomControl=c(0.1,0.1,-0.1,-0.1)){
 
+plot_route <- function(addresses,
+                       how = c("car", "bike", "foot"),
+                       colour = "black",
+                       opacity = 1,
+                       weight = 1,
+                       radius = 2,
+                       label_text = addresses,
+                       label_position = "bottom",
+                       font = "Lucida Console",
+                       font_weight = "bold",
+                       font_size = "14px",
+                       text_indent = "15px",
+                       mapBoxTemplate = "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                       zoomControl = c(0.1, 0.1, -0.1, -0.1)) {
   address_single <- tibble(singlelineaddress = addresses) %>%
-    geocode(address=singlelineaddress,method = 'arcgis') %>%
-    transmute(id = singlelineaddress,
-              lon=long,
-              lat=lat)
+    geocode(address = singlelineaddress, method = 'arcgis') %>%
+    transmute(id = singlelineaddress, lon = long, lat = lat)
 
 
   trip <- list()
 
-  for(i in 1:(nrow(address_single)-1)){
-    trip[[i]] <- osrmRoute(src=address_single[i,2:3] %>% c %>% unlist,
-                           dst=address_single[i+1,2:3] %>% c %>% unlist,
-                           overview="full",
-                           osrm.profile = how[i] )
+  for (i in 1:(nrow(address_single) - 1)) {
+    trip[[i]] <- osrmRoute(
+      src = address_single[i, 2:3] %>% c %>% unlist,
+      dst = address_single[i + 1, 2:3] %>% c %>% unlist,
+      overview = "full",
+      osrm.profile = how[i]
+    )
   }
-  trip<-do.call(rbind,trip)
+  trip <- do.call(rbind, trip)
 
-  trip<-do.call(rbind,st_geometry(trip)) %>%
+  trip <- do.call(rbind, st_geometry(trip)) %>%
     as_tibble(.name_repair = "unique") %>%
-    set_names(c("lon","lat")) %>%
+    set_names(c("lon", "lat")) %>%
     as.data.frame() %>%
     as.matrix()
 
-  m<-leaflet(trip,
-             options = leafletOptions(zoomControl = FALSE,
-                                      attributionControl=FALSE)) %>%
-    fitBounds(lng1 = max(address_single$lon)+zoomControl[1],
-              lat1 = max(address_single$lat)+zoomControl[2],
-              lng2 = min(address_single$lon)+zoomControl[3],
-              lat2 = min(address_single$lat)+zoomControl[4]) %>%
+  m <- leaflet(trip,
+               options = leafletOptions(zoomControl = FALSE, attributionControl =
+                                          FALSE)) %>%
+    fitBounds(
+      lng1 = max(address_single$lon) + zoomControl[1],
+      lat1 = max(address_single$lat) + zoomControl[2],
+      lng2 = min(address_single$lon) + zoomControl[3],
+      lat2 = min(address_single$lat) + zoomControl[4]
+    ) %>%
     addTiles(urlTemplate = mapBoxTemplate) %>%
-    addCircleMarkers(lat = address_single$lat,
-                     lng = address_single$lon,
-                     color = colour,
-                     stroke = TRUE,
-                     radius = radius,
-                     fillOpacity = opacity) %>%
-    addPolylines(lng=trip[,1],
-                 lat=trip[,2],
-                 color = colour,
-                 opacity=opacity,
-                 weight=weight) %>%
-    addLabelOnlyMarkers(address_single$lon,
-                        address_single$lat,
-                        label =  label_text,
-                        labelOptions = labelOptions(noHide = T,
-                                                    direction = label_position,
-                                                    textOnly = T,
-                                                    style=list("font-family" = font,
-                                                               "font-weight"= font_weight,
-                                                               "font-size"=font_size,
-                                                               "text-indent"=text_indent)))
+    addCircleMarkers(
+      lat = address_single$lat,
+      lng = address_single$lon,
+      color = colour,
+      stroke = TRUE,
+      radius = radius,
+      fillOpacity = opacity
+    ) %>%
+    addPolylines(
+      lng = trip[, 1],
+      lat = trip[, 2],
+      color = colour,
+      opacity = opacity,
+      weight = weight
+    ) %>%
+    addLabelOnlyMarkers(
+      address_single$lon,
+      address_single$lat,
+      label =  label_text,
+      labelOptions = labelOptions(
+        noHide = T,
+        direction = label_position,
+        textOnly = T,
+        style = list(
+          "font-family" = font,
+          "font-weight" = font_weight,
+          "font-size" =
+            font_size,
+          "text-indent" =
+            text_indent,
+          "color" = colour
+        )
+      )
+    )
 
   m
 }

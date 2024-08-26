@@ -21,15 +21,20 @@
 #'
 #' plot_city_view("Amsterdam", zoomControl=c(0.01,0.01,-0.01,-0.01))
 
-plot_city_view<-function(city,
-                         mapBoxTemplate= "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                         zoomControl=c(0.1,0.1,-0.1,-0.1),
-                         icon=list(show_icon=FALSE, icon_name="ios-close", icon_color="black", icon_library="ion", marker_color="red")){
+
+plot_city_view <- function(city,
+                           mapBoxTemplate = "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                           zoomControl = c(0.1, 0.1, -0.1, -0.1),
+                           icon = list(
+                             show_icon = FALSE,
+                             icon_name = "ios-close",
+                             icon_color = "black",
+                             icon_library = "ion",
+                             marker_color = "red"
+                           )) {
   address_single <- tibble::tibble(singlelineaddress = city) %>%
-    tidygeocoder::geocode(address=singlelineaddress,method = 'arcgis') %>%
-    dplyr::transmute(id = singlelineaddress,
-              lon=long,
-              lat=lat)
+    tidygeocoder::geocode(address = singlelineaddress, method = 'arcgis') %>%
+    dplyr::transmute(id = singlelineaddress, lon = long, lat = lat)
 
   icons <- awesomeIcons(
     icon = icon$icon_name,
@@ -38,17 +43,20 @@ plot_city_view<-function(city,
     markerColor = icon$marker_color
   )
 
-  m<-leaflet(address_single,
-             options = leafletOptions(zoomControl = FALSE,
-                                      attributionControl=FALSE)) %>%
+  m <- leaflet(address_single,
+               options = leafletOptions(zoomControl = FALSE, attributionControl =
+                                          FALSE)) %>%
     addTiles(urlTemplate = mapBoxTemplate) %>%
-    fitBounds(lng1 = max(address_single$lon)+zoomControl[1],
-              lat1 = max(address_single$lat)+zoomControl[2],
-              lng2 = min(address_single$lon)+zoomControl[3],
-              lat2 = min(address_single$lat)+zoomControl[4])
+    fitBounds(
+      lng1 = max(address_single$lon) + zoomControl[1],
+      lat1 = max(address_single$lat) + zoomControl[2],
+      lng2 = min(address_single$lon) + zoomControl[3],
+      lat2 = min(address_single$lat) + zoomControl[4]
+    )
 
-  if(icon$show_icon){m <- m %>%
-    addAwesomeMarkers(address_single$lon, address_single$lat, icon=icons)
+  if (icon$show_icon) {
+    m <- m %>%
+      addAwesomeMarkers(address_single$lon, address_single$lat, icon = icons)
   }
 
   m

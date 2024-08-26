@@ -44,86 +44,93 @@
 #'                         )
 #'viz_1
 
-plot_hybrid_route_flex<- function(addresses,
-                             how=c("car","flight","bike","foot"),
-                             colour="black",
-                             opacity=1,
-                             weight=1,
-                             radius=2,
-                             label_text=addresses,
-                             label_position="bottom",
-                             font = "Lucida Console",
-                             font_weight="bold",
-                             font_size= "14px",
-                             text_indent="15px",
-                             mapBoxTemplate= "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                             nCurves=100,
-                             zoomControl=c(0.1,0.1,-0.1,-0.1)){
-
+plot_hybrid_route_flex <- function(addresses,
+                                   how = c("car", "flight", "bike", "foot"),
+                                   colour = "black",
+                                   opacity = 1,
+                                   weight = 1,
+                                   radius = 2,
+                                   label_text = addresses,
+                                   label_position = "bottom",
+                                   font = "Lucida Console",
+                                   font_weight = "bold",
+                                   font_size = "14px",
+                                   text_indent = "15px",
+                                   mapBoxTemplate = "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                                   nCurves = 100,
+                                   zoomControl = c(0.1, 0.1, -0.1, -0.1)) {
   address_single <- tibble(singlelineaddress = addresses) %>%
-    geocode(address=singlelineaddress,method = 'arcgis') %>%
-    transmute(id = singlelineaddress,
-              lon=long,
-              lat=lat)
+    geocode(address = singlelineaddress, method = 'arcgis') %>%
+    transmute(id = singlelineaddress, lon = long, lat = lat)
 
-  trip <- matrix(nrow=1,ncol=2)
+  trip <- matrix(nrow = 1, ncol = 2)
 
 
-  for(i in 1:(nrow(address_single)-1)){
-    if(how[i]=="flight"){
-      trip<-rbind(trip,
-                  gcIntermediate(address_single[i,2:3],
-                                 address_single[i+1,2:3],
-                                 n=nCurves,
-                                 addStartEnd = T) )
-    }else{
-      roadTrip<-osrmRoute(src=address_single[i,2:3] %>% c  %>% unlist,
-                            dst=address_single[i+1,2:3] %>% c  %>% unlist,
-                            overview="full",
-                            osrm.profile = how[i])
+  for (i in 1:(nrow(address_single) - 1)) {
+    if (how[i] == "flight") {
+      trip <- rbind(
+        trip,
+        gcIntermediate(
+          address_single[i, 2:3],
+          address_single[i + 1, 2:3],
+          n = nCurves,
+          addStartEnd = T
+        )
+      )
+    } else{
+      roadTrip <- osrmRoute(
+        src = address_single[i, 2:3] %>% c  %>% unlist,
+        dst = address_single[i + 1, 2:3] %>% c  %>% unlist,
+        overview = "full",
+        osrm.profile = how[i]
+      )
 
 
-      roadTrip<- do.call(rbind,st_geometry(roadTrip)) %>%
+      roadTrip <- do.call(rbind, st_geometry(roadTrip)) %>%
         as_tibble(.name_repair = "unique") %>%
-        set_names(c("lon","lat")) %>%
+        set_names(c("lon", "lat")) %>%
         as.data.frame() %>%
         as.matrix()
 
-      trip <- rbind(trip,
-                    roadTrip)
+      trip <- rbind(trip, roadTrip)
     }
 
   }
 
 
-  m<-leaflet(trip,
-             options = leafletOptions(zoomControl = FALSE,
-                                      attributionControl=FALSE)) %>%
-    fitBounds(lng1 = max(address_single$lon)+zoomControl[1],
-              lat1 = max(address_single$lat)+zoomControl[2],
-              lng2 = min(address_single$lon)+zoomControl[3],
-              lat2 = min(address_single$lat)+zoomControl[4]) %>%
+  m <- leaflet(trip,
+               options = leafletOptions(zoomControl = FALSE, attributionControl =
+                                          FALSE)) %>%
+    fitBounds(
+      lng1 = max(address_single$lon) + zoomControl[1],
+      lat1 = max(address_single$lat) + zoomControl[2],
+      lng2 = min(address_single$lon) + zoomControl[3],
+      lat2 = min(address_single$lat) + zoomControl[4]
+    ) %>%
     addTiles(urlTemplate = mapBoxTemplate) %>%
-    addCircleMarkers(lat = address_single$lat,
-                     lng = address_single$lon,
-                     color = colour,
-                     stroke = TRUE,
-                     radius = radius,
-                     fillOpacity = opacity) %>%
-    addPolylines(lng=trip[,1],
-                 lat=trip[,2],
-                 color = colour,
-                 opacity=opacity,
-                 weight=weight)
+    addCircleMarkers(
+      lat = address_single$lat,
+      lng = address_single$lon,
+      color = colour,
+      stroke = TRUE,
+      radius = radius,
+      fillOpacity = opacity
+    ) %>%
+    addPolylines(
+      lng = trip[, 1],
+      lat = trip[, 2],
+      color = colour,
+      opacity = opacity,
+      weight = weight
+    )
 
-  for(i in 1:nrow(address_single)){
-
+  for (i in 1:nrow(address_single)) {
     m <- m %>%
       addLabelOnlyMarkers(
         address_single$lon[i],
         address_single$lat[i],
         label =  label_text[i],
-        labelOptions =labelOptions(
+        labelOptions = labelOptions(
           noHide = T,
           direction = label_position[i],
           textOnly = T,
@@ -141,5 +148,3 @@ plot_hybrid_route_flex<- function(addresses,
 
   m
 }
-
-

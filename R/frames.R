@@ -20,19 +20,18 @@
 #' plot_city_view("Jersalem, IL") |>
 #'  frame_1(title_text="Jerusalem", subtitle_text="City of Gold", subtitle_font="Brush Script MT")
 
-frame_1<- function(map,
-                   title_text="Title",
-                   subtitle_text = "Subtitle",
-                   title_font="Brush Script MT",
-                   subtitle_font = "Trebuchet MS",
-                   frame_width = "100%",
-                   frame_height = 780
-){
+frame_1 <- function(map,
+                    title_text = "Title",
+                    subtitle_text = "Subtitle",
+                    title_font = "Brush Script MT",
+                    subtitle_font = "Trebuchet MS",
+                    frame_width = "100%",
+                    frame_height = 780) {
   ui <-
-    fillPage(
-      ## see various ways of including CSS: https://shiny.rstudio.com/articles/css.html
-      tags$head(
-        tags$style(HTML(paste0("
+    fillPage(## see various ways of including CSS: https://shiny.rstudio.com/articles/css.html
+      tags$head(tags$style(HTML(
+        paste0(
+          "
                   #greetings{
                    top:-8rem;
                    position:bottom;
@@ -44,23 +43,23 @@ frame_1<- function(map,
                                 border-color: #ffffff;
                                 }
                   .title_text{top:-5rem;
-                              font-family:", title_font,";
+                              font-family:",
+          title_font,
+          ";
                               text-align: center;}
                   .subtitle_text{
-                              font-family:",subtitle_font,";
+                              font-family:",
+          subtitle_font,
+          ";
                               text-align: center;
                   }
-      "))
+      "
         )
-      ),
+      ))),
       div(class = 'fancy_border', ## set CSS class to style border
-          div(leafletOutput('map',
-                            width= frame_width,
-                            height=frame_height)),
-          div(id = 'greetings',
-              uiOutput('message'))
-
-      ))
+          div(
+            leafletOutput('map', width = frame_width, height = frame_height)
+          ), div(id = 'greetings', uiOutput('message'))))
 
 
 
@@ -70,9 +69,9 @@ frame_1<- function(map,
     })
     ## note that you can also add CSS classes here:
     output$message <- renderUI(tagList(
-      h1(title_text, class='title_text'),
-      h3(subtitle_text, class='subtitle_text'))
-    )
+      h1(title_text, class = 'title_text'),
+      h3(subtitle_text, class = 'subtitle_text')
+    ))
 
   }
   shinyApp(ui, server)
@@ -80,19 +79,18 @@ frame_1<- function(map,
 
 
 
-frame_2<- function(map,
-                   title_text="Title",
-                   subtitle_text = "Subtitle",
-                   title_font="Brush Script MT",
-                   subtitle_font = "Trebuchet MS",
-                   frame_width = "100%",
-                   frame_height = 780
-){
+frame_2 <- function(map,
+                    title_text = "Title",
+                    subtitle_text = "Subtitle",
+                    title_font = "Brush Script MT",
+                    subtitle_font = "Trebuchet MS",
+                    frame_width = "100%",
+                    frame_height = 780) {
   ui <-
-    fillPage(
-      ## see various ways of including CSS: https://shiny.rstudio.com/articles/css.html
-      tags$head(
-        tags$style(HTML(css_string <- paste0("
+    fillPage(## see various ways of including CSS: https://shiny.rstudio.com/articles/css.html
+      tags$head(tags$style(HTML(
+        css_string <- paste0(
+          "
                   #greetings {
                       top: -8rem;
                       position: absolute;
@@ -122,7 +120,9 @@ frame_2<- function(map,
                   .title_text {
                       position: absolute;
                       top: -5rem;
-                      font-family:", title_font, ";
+                      font-family:",
+          title_font,
+          ";
                       text-align: center;
                       width: 100%;
                   }
@@ -130,7 +130,9 @@ frame_2<- function(map,
                   .subtitle_text {
                       position: absolute;
                       top: 1rem; /* Adjust position as needed */
-                      font-family: ", subtitle_font, ";
+                      font-family: ",
+          subtitle_font,
+          ";
                       text-align: center;
                       width: 100%;
                   }
@@ -139,18 +141,13 @@ frame_2<- function(map,
                   .title_text, .subtitle_text {
                       padding: 0 1rem;
                   }
-      ")
+      "
         )
-        )
-      ),
+      ))),
       div(class = 'fancy_border', ## set CSS class to style border
-          div(leafletOutput('map',
-                            width= frame_width,
-                            height=frame_height)),
-          div(id = 'greetings',
-              uiOutput('message'))
-
-      ))
+          div(
+            leafletOutput('map', width = frame_width, height = frame_height)
+          ), div(id = 'greetings', uiOutput('message'))))
 
 
 
@@ -160,9 +157,9 @@ frame_2<- function(map,
     })
     ## note that you can also add CSS classes here:
     output$message <- renderUI(tagList(
-      h1(title_text, class='title_text'),
-      h3(subtitle_text, class='subtitle_text'))
-    )
+      h1(title_text, class = 'title_text'),
+      h3(subtitle_text, class = 'subtitle_text')
+    ))
 
   }
   shinyApp(ui, server)
