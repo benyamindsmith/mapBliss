@@ -104,7 +104,10 @@ This package depends on the following packages:
  Some Example Visuals
 </h3>
 </summary>
+ 
 The following are just some screen shots of the images that can be produced. It is possible to create a map and save it as .svg file for a sharper image.
+
+![image](https://github.com/user-attachments/assets/b56168af-b044-4f3c-8be8-653f2cb30aa8)
 
 
 ![image](https://user-images.githubusercontent.com/46410142/199815517-4da0d3f8-84a6-482c-83e7-c4e33d0dce7b.png)
