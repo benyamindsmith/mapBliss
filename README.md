@@ -64,6 +64,8 @@ Cronology and Updates
 5. [Control Individual Label Positions In mapBliss With `_flex()` Functions](https://bensstats.wordpress.com/2022/11/23/robservations-43-control-individual-label-positions-in-mapbliss-with-_flex-functions/)
 
 6. [Adding Frame and Custom Title Support To mapBliss](https://bensstats.wordpress.com/2022/12/27/robservations-44-adding-frame-and-custom-title-support-to-mapbliss/)
+
+7. [a journey across the United States with mapBliss](https://bensstats.wordpress.com/2024/12/15/robservations-50-a-journey-across-the-united-states-with-mapbliss/)
 </details>
 
 
