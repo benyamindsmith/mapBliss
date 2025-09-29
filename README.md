@@ -72,7 +72,9 @@ Cronology and Updates
 ### Installing This Package
 
 ```r
-devtools::install_github("benyamindsmith/mapBliss")
+# Install the `pak` package if you don't have it
+# install.packages("pak")
+pak::pkg_install("benyamindsmith/mapBliss")
 ```
 
 <details>
