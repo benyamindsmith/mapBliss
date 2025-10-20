@@ -32,7 +32,7 @@ Introduction
 </h2>
 </summary>
 
-This package is based functions I created for creating print-quality souvenir maps like the ones you can find on [Atlas.co](atlas.co/products/map).
+This package is based functions I created for creating print-quality souvenir maps like the ones you can find on (the now [defunct](https://www.reddit.com/r/KaraAndNate/comments/16lynaf/atlasco_is_shutting_down/)) [Atlas.co](atlas.co/products/map).
 
 __Update:__ Atlas.co announced that it has shut down, (see [here](https://www.reddit.com/r/KaraAndNate/comments/16lynaf/atlasco_is_shutting_down/)). `mapBliss` is still ready to use!
 
